@@ -5,52 +5,42 @@
 	}
 
 	header {
-		width: 1300px;
+		width: 2000px;
 		height: 64px;
-		background-color: white;
 		position: fixed;
+		top: 0px;
 		z-index: 990;
-		margin-left: 70px;
+	
 	}
 	#mainMenu {
-		width: 900px;
+		width:920px;
 		height: 64px;
-		background-color: white;
-		display: inline-block;
-		margin: auto;
+		margin-left: 400px;
+		float: left;
 	}
 	#logo {
-		display: inline-block;
+		margin-top: 15px;
 		float: left;
-		position: relative;
-		margin-left: 270px;
-		padding-top: 30px;
 	}
 	#category{
-		background-color: white;
-		width: 500px;
-		height: 64px;
-		position: relative;
-		margin-left: 550px;
+		margin-bottom: 100px;
+		float: left;
+		padding-left: 70px;
 		
 	}
 	
 	nav li {
-	float: left;
-	list-style: none;
-	margin-right: 20px;
-	font-size: 1.1em;
-	font-weight: bold;
-	padding-right: 43px;
-	padding-top: 35px;
+		float: left;
+		list-style: none;
+		margin-right: 80px;
+		height: 64px;
+		line-height: 64px;
+		font-size: 1.0em;
+		font-weight: bold;
+		
 	}
 	nav a {
-<<<<<<< HEAD
-		
 		color:black;
-=======
-		color: white;
->>>>>>> Duho
 		text-decoration: none;
 	}
 	
@@ -59,13 +49,9 @@
 	}
 	
 	#memberMenu {
-		width: 150px;
-		height: 40px;
-		background-color: white;
-		float: right;
-		position: relative;
-		padding-top: 35px;
-		margin-left: 50px;
-	
+		padding-top: 15px;
+		width: 200px;
+		height: 64px;
+		float: left;
 		
 	}
