@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>
-	<form action="">
+	<form action="" title="로그인">
 		<b>여기갈래 로그인</b>
 		<hr>
 		<p><input type="text" placeholder="이메일 주소"></p>
