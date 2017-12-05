@@ -10,3 +10,31 @@
 		height: 600px;
 		background-color: #87CEFA;
 	}
+	.td {
+		border-right: 1px solid black;
+		text-align: center;
+	}
+	#tb{
+		width: 60%;
+		height: 200px;
+		margin: 0 auto;
+		border:  1px solid black;
+	}
+	.scbtxt {
+		margin: 0 auto;
+	}
+	#txt1 {
+		width: 60%;
+		height: 100px;
+	}
+	.scbtxt b {
+		font-size: 24px;
+		margin-left: 35%;
+	}
+	.tbsel {
+		display: inline-block;
+		float: left;
+		width: 100px;
+		height: 30px;
+		text-align: center;
+	}
