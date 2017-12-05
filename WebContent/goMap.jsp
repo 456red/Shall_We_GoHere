@@ -6,9 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="./css/goMap.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
-
+	<%@include file="./temp/header.jsp" %>
 		<div id="mapMenu">
 			
 		</div>
