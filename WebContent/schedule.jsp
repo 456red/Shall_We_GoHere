@@ -6,11 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="./css/schedule.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#goMap").click(function(){
+		location.href="./goMap.jsp";
+	});
+});
+</script>
 </head>
 <body>
 	<div id = "schmain">
 		<p>누구나 쉽게 일정을 계획할 수 있습니다.</p>
-		<input type ="button" value="새로운 일정 만들기">
+		<input type ="button" id="goMap" value="새로운 일정 만들기">
 		<input type ="button" value="나의 일정 보기">
 	</div>
 	<div>
