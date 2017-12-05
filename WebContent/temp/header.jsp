@@ -12,13 +12,16 @@
 	 $("#joinbtn").click(function(){
 		 window.open("../member/memberJoin.jsp", "", "top=300, left=750, width=400, height=400");
 	 });
+	 $("#loginbtn").click(function(){
+		 window.open("../member/memberLogin.jsp", "", "top=300, left=750, width=400, height=400");
+	 });
  });
 </script>
 </head>
 <body>
 	<header>
 		<div id="mainMenu">
-			<div id="logo"><a href="#"><img alt="" src="../image/common/logo.png"></a></div>
+			<div id="logo"><a href="#"><img alt="" src="../images/common/logo.png"></a></div>
 			<nav>
 				<ul>
 					<li><a href="#">여행정보</a></li>
@@ -28,8 +31,8 @@
 				</ul>
 			</nav>
 			<div id="memberMenu">
-				<input type="button" value="로그인" id="joinbtn">
-				<input type="button" value="회원가입">
+				<input type="button" value="로그인" id="loginbtn">
+				<input type="button" value="회원가입" id= "joinbtn">
 			</div>
 		</div>
 	</header>
