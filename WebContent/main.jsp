@@ -8,20 +8,9 @@
 <link href="./css/main.css" rel="stylesheet">
 </head>
 <body>
-<header>
-	<div id="hdtop">
-		<div id="logo"></div>
-		<nav>
-			<ul>
-				<li><a href="#">여행정보</a></li>
-				<li><a href="#">여행일정</a></li>
-				<li><a href="#">후기</a></li>
-				<li><a href="#">급식나라</a></li>
-			</ul>		
-		</nav>
-	</div>
+<%@include file="./temp/header.jsp" %>
 
-</header>
+
 
 </body>
 </html>
