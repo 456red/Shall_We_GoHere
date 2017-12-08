@@ -8,17 +8,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-.exchange_board {
-	width: 1500px;
-	height: 800px;
-	background-color: maroon;
-}
 
-.product_board {
-	width: 1500px;
-	height: 800px;
-	background-color: maroon;
-}
 </style>
 <link href="../css/usage.css" rel="stylesheet">
 </head>
