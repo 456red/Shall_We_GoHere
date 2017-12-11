@@ -11,6 +11,7 @@
 
 </style>
 <link href="../css/usage.css" rel="stylesheet">
+<link href="../css/sell_kate.css" rel="stylesheet">
 </head>
 <body>
 	<!--Header 시작-->
@@ -25,16 +26,7 @@
 		</article>
 	</section>
 
-	<section class="kate_board">
-		<ul class="kate_line">
-			<li><a href="#">이용 방법</a></li>
-			<li><a href="./exchange.jsp">상품 교환</a></li>
-			<li><a href="#">상품 구매</a></li>
-			<li><a href="#">이용권</a></li>
-			<li><a href="#">여행 용품</a></li>
-			<li><a href="#">상품 후기</a></li>
-		</ul>
-	</section>
+<%@include file="../temp/sell_kate.jsp"%>
 
 	<div class="title_board">
 		<ul class="title">

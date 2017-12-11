@@ -30,7 +30,7 @@
 					<li><a href="#">여행정보</a></li>
 					<li><a href="#">여행일정</a></li>
 					<li><a href="#">여행후기</a></li>
-					<li><a href="#">중고나라</a></li>
+					<li><a href="../sell/sell.jsp">중고나라</a></li>
 				</ul>
 			</nav>
 		</div>
