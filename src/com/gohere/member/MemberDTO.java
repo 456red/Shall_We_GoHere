@@ -4,7 +4,8 @@ public class MemberDTO {
 	private String name;
 	private String password;
 	private String email;
-	private String gender;
+	private String phone;
+	private String recommend;
 	private int point;
 	
 	public String getName() {
@@ -19,17 +20,23 @@ public class MemberDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getRecommend() {
+		return recommend;
+	}
+	public void setRecommend(String recommend) {
+		this.recommend = recommend;
+	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 	public int getPoint() {
 		return point;
