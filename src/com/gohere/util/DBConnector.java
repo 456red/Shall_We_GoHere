@@ -13,7 +13,7 @@ public class DBConnector {
 		String url = "jdbc:oracle:thin:@192.168.20.55:1521:xe";
 		String driver ="oracle.jdbc.driver.OracleDriver";
 		
-		Class.forName(driver); //스트링으로 된것을 클래스로 바꿔주는역할
+		Class.forName(driver);
 		
 		Connection con = DriverManager.getConnection(url, user, password);
 		
