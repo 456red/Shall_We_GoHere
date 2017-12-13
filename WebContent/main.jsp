@@ -6,8 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="./css/main.css" rel="stylesheet">
+
 </head>
 <body>
+<<<<<<< HEAD
 <header>
 	<div id="hdtop">
 		<div id="logo"></div>
@@ -20,8 +22,11 @@
 			</ul>		
 		</nav>
 	</div>
+=======
+<%@include file="./temp/header.jsp" %>
 
-</header>
+>>>>>>> master
+
 
 </body>
 </html>
