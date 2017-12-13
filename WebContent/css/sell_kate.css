@@ -1,11 +1,7 @@
 @charset "UTF-8";
-*{
-	margin: 0;
-	padding: 0;
-}
 
 .kate_board {
-	width: 100%;
+	width: 1903px;
 	height: 50px;
 	background-color: black;
 }
@@ -17,15 +13,14 @@
 }
 
 .kate_line li {
-	width: 300px;
 	float: left;
 	list-style-type: none;
 	cursor: pointer;
 	padding: 16px 0 13px;
+	margin-left: 150px;
 	font-size: 15px;
 	font-family: monospace;
 	font-weight: bold;
-	text-align: center;
 }
 li a {
 	color: white;
