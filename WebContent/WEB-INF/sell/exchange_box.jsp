@@ -6,39 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.view_board_2 {
-	width: 1200px;
-	height: 2650px;
-	margin: 0 auto;
-	border-bottom: 1px solid black;
-}
 
-.p_2 {
-	margin-left: 100px;
-	width: 1000px;
-	height: 650px;
-	padding-top: 30px;
-	padding-bottom: 30px;
-}
-
-.del_board {
-	width: 1200px;
-	height: 530px;
-	padding-top: 33px;
-	padding-bottom: 30px;
-	margin: 0 auto; 
-	border-bottom: 1px solid black;
-	background-color: blue;
-}
-
-.del {
-	width : 856px;
-	height: 470px;
-	margin: 0 auto; 
-}
 </style>
 <link href="../css/exchange_box.css" rel="stylesheet">
 <link href="../css/sell_kate.css" rel="stylesheet">
+<link href="../css/header.css" rel="stylesheet">
 </head>
 <body>
 	<!--Header 시작-->

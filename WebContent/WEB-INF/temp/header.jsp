@@ -19,10 +19,10 @@
 	 $('#loginbtn').tooltip({title: "여기갈래!", placement: "bottom"});
 	 
 	 $("#joinbtn").click(function(){
-		 window.open("./member/memberJoin.member", "", "top=300, left=750, width=400, height=400");
+		 window.open("<%=request.getContextPath()%>/member/memberJoin.member", "", "top=300, left=750, width=400, height=400");
 	 });
 	 $("#loginbtn").click(function(){
-		 window.open("./member/memberLogin.member", "", "top=300, left=750, width=400, height=400");
+		 window.open("<%=request.getContextPath()%>/member/memberLogin.member", "", "top=300, left=750, width=400, height=400");
 	 });
 	 $("#logoutbtn").click(function(){
 		 location.href="./member/memberLogout.member";
