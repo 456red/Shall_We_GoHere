@@ -78,7 +78,6 @@ public class SellController extends HttpServlet {
 		String path = request.getServletPath();
 		Action action = null;
 		ActionFoward actionFoward = null;
-		
 		action = (Action)command.get(path);
 		actionFoward = action.doProcess(request, response);
 		

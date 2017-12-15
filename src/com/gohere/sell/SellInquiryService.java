@@ -43,6 +43,7 @@ public class SellInquiryService implements Action {
 			request.setAttribute("page", pageing);
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}
 		actionFoward.setCheck(true);

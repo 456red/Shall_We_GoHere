@@ -80,7 +80,7 @@ public class ReviewDAO implements BoardDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, V.* from "
-				+ "(select * from s_review where "+makeRow.getKind()+" like ? order by ref desc, step asc) V) "
+				+ "(select * from s_review where "+makeRow.getKind()+" like ? order by num desc) V) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+makeRow.getSearch()+"%");
@@ -96,9 +96,6 @@ public class ReviewDAO implements BoardDAO {
 			reviewDTO.setContents(rs.getString("contents"));
 			reviewDTO.setReg_date(rs.getDate("r_date"));
 			reviewDTO.setHit(rs.getInt("hit"));
-			reviewDTO.setRef(rs.getInt("ref"));
-			reviewDTO.setStep(rs.getInt("step"));
-			reviewDTO.setDepth(rs.getInt("depth"));
 			ar.add(reviewDTO);
 		}
 		DBConnector.disConnect(st, con, rs);

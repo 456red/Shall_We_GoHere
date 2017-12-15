@@ -62,6 +62,7 @@ public class InquiryDAO implements BoardDAO {
 		ResultSet rs = st.executeQuery();
 		InquiryDTO inquiryDTO = null;
 		if(rs.next()) {
+			
 			inquiryDTO = new InquiryDTO();
 			inquiryDTO.setNum(rs.getInt("num"));
 			inquiryDTO.setTitle(rs.getString("title"));
@@ -71,7 +72,7 @@ public class InquiryDAO implements BoardDAO {
 			inquiryDTO.setHit(rs.getInt("hit"));
 		}
 		DBConnector.disConnect(st, con, rs);
-		return null;
+		return inquiryDTO;
 	}
 
 	@Override //SelectList
@@ -80,7 +81,7 @@ public class InquiryDAO implements BoardDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, I.* from "
-				+ "(select * from s_inquiry where "+makeRow.getKind()+" like ? order by ref desc, step asc) I) "
+				+ "(select * from s_inquiry where "+makeRow.getKind()+" like ? order by num desc) I) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+makeRow.getSearch()+"%");
@@ -96,9 +97,6 @@ public class InquiryDAO implements BoardDAO {
 			inquiryDTO.setContents(rs.getString("contents"));
 			inquiryDTO.setReg_date(rs.getDate("r_date"));
 			inquiryDTO.setHit(rs.getInt("hit"));
-			inquiryDTO.setRef(rs.getInt("ref"));
-			inquiryDTO.setStep(rs.getInt("step"));
-			inquiryDTO.setDepth(rs.getInt("depth"));
 			ar.add(inquiryDTO);
 		}
 		DBConnector.disConnect(st, con, rs);
