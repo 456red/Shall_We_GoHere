@@ -32,13 +32,13 @@ public class SellInquiryWriteService implements Action {
 				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 				inquiryDTO.setWriter(multi.getParameter("writer"));
 				inquiryDTO.setTitle(multi.getParameter("title"));
-				inquiryDTO.setContents(multi.getParameter("contest"));
+				inquiryDTO.setContents(multi.getParameter("contents"));
 
 				Enumeration<Object> names = multi.getFileNames();
 				while(names.hasMoreElements()) {
 					String name = (String)names.nextElement();
-					String fileName = multi.getFilesystemName(name); //올라간 파일 → 실제 저장된 이름
-					String oriName = multi.getOriginalFileName(name); //올릴때의 이름
+					String fName = multi.getFilesystemName(name);
+					String oName = multi.getOriginalFileName(name);
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -57,17 +57,20 @@ public class SellInquiryWriteService implements Action {
 			try {
 				result = inquiryDAO.insert(inquiryDTO);
 			} catch (Exception e) {
+				e.printStackTrace();
 				// TODO: handle exception
 			}
-
+			
 			if(result>0) {
-				actionFoward.setCheck(false);
-				actionFoward.setPath("./boardList.sell");
+				request.setAttribute("message", "글이 등록 되었습니다.");
+				request.setAttribute("path", "./inquiryList.sell");
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/common/result.jsp");
 			}else {
 				request.setAttribute("message", "Fail");
-				request.setAttribute("path", "./boardList.sell");
+				request.setAttribute("path", "./inquiryList.sell");
 				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEN-INF/common/result.jsp");
+				actionFoward.setPath("../WEB-INF/common/result.jsp");
 			}
 
 		}else { //GET일 경우

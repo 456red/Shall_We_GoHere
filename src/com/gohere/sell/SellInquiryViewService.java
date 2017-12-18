@@ -13,16 +13,27 @@ public class SellInquiryViewService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		InquiryDAO inquiryDAO = new InquiryDAO();
 		BoardDTO boardDTO = null;
+		int hit = 0;
 		int num = 0;
+		
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		try {
-			boardDTO = inquiryDAO.selectOne(num);
+			hit = inquiryDAO.hit(num);
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
+		}
+		InquiryDTO inquiryDTO = new InquiryDTO();
+		inquiryDTO.setHit(hit);
+		
+		try {
+			boardDTO = inquiryDAO.selectOne(num);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(boardDTO != null) {

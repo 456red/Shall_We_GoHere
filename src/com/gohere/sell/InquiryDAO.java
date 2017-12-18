@@ -14,13 +14,12 @@ public class InquiryDAO implements BoardDAO {
 	@Override //Insert
 	public int insert(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into s_inquiry values(?,?,?,?,sysdate,?,0,0)"; 
+		String sql = "insert into s_inquiry values(?,?,?,?,sysdate,0)"; 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, boardDTO.getNum());
 		st.setString(2, boardDTO.getTitle());
 		st.setString(3, boardDTO.getWriter());
 		st.setString(4, boardDTO.getContents());
-		st.setInt(5, boardDTO.getHit());
 		int result = st.executeUpdate();
 
 		DBConnector.disConnect(st, con);

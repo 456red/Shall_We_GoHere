@@ -65,11 +65,12 @@
 				</tr>
 			</tbody>
 		</table>
-		<a class="btn btn-success" href="./${board}List.sell">List</a>
+		<a class="btn btn-success" href="./${board}List.sell">List</a> 
+		<a class="btn btn-primary" href="${board}Update.sell?num=${view.num}">Update</a>
+		<a class="btn btn-danger" href="${board}Delete.sell?num=${view.num}">Delete</a>
 
 		<div id="btn">
-			<a class="btn btn-primary" href="${board}Update.sell?num=${view.num}">Update</a>
-			<a class="btn btn-danger" href="${board}Delete.sell?num=${view.num}">Delete</a>
+			<button class="btn btn-secondary">Reply</button>
 		</div>
 	</section>
 	<!--Main 끝-->
