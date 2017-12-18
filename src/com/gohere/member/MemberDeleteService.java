@@ -28,7 +28,7 @@ public class MemberDeleteService implements Action {
 				e.printStackTrace();
 			}
 			if(result>0) {
-				request.setAttribute("message", "탈퇴완료");
+				request.setAttribute("message", "탈퇴완료1");
 				request.setAttribute("path", "../main.jsp");
 				request.getSession().invalidate();
 			}else{
