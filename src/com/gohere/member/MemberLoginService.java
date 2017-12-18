@@ -33,6 +33,7 @@ public class MemberLoginService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/message/message.jsp");
 		}else {
+			
 			actionFoward = new ActionFoward();
 			message="로그인 성공";
 			request.getSession().setAttribute("member", memberDTO);
@@ -40,6 +41,7 @@ public class MemberLoginService implements Action {
 			request.setAttribute("path", "../main.jsp");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/message/message.jsp");
+			
 		}
 	}else {
 			actionFoward = new ActionFoward();
