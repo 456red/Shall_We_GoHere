@@ -5,13 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="./css/header.css" rel="stylesheet">
-
 </head>
 <body>
-
-<%@include file="./WEB-INF/temp/header.jsp" %>
-
-
+	<h1>Server Error</h1>
 </body>
 </html>

@@ -5,13 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="./css/header.css" rel="stylesheet">
-
+<script type="text/javascript">
+	alert('${message}');
+	location.href="${path}"
+</script>
 </head>
 <body>
-
-<%@include file="./WEB-INF/temp/header.jsp" %>
-
 
 </body>
 </html>

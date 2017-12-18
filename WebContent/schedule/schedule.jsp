@@ -20,7 +20,11 @@ $(function(){
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<%@ include file="../temp/header.jsp" %>
+=======
+	
+>>>>>>> JJH
 	<div id = "schmain">
 		<p>누구나 쉽게 일정을 계획할 수 있습니다.</p>
 		<input type ="button" id="goMap" value="새로운 일정 만들기">
