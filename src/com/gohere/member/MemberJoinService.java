@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.gohere.action.Action;
 import com.gohere.action.ActionFoward;
 
+
 public class MemberJoinService implements Action {
 
 	@Override

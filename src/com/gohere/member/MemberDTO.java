@@ -1,11 +1,21 @@
 package com.gohere.member;
 
+import java.util.Date;
+
 public class MemberDTO {
 	private String name;
 	private String password;
 	private String email;
 	private String phone;
 	private String recommend;
+	private Date join_date;
+	
+	public Date getJoin_date() {
+		return join_date;
+	}
+	public void setJoin_date(Date join_date) {
+		this.join_date = join_date;
+	}
 	private int point;
 	
 	public String getName() {

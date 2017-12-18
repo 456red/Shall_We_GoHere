@@ -1,0 +1,51 @@
+@charset "UTF-8";
+	
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#contents {
+		margin-top: 64px;
+	}
+	
+	#map {
+		width: 60%;
+		height: 910px;
+		float: right;
+        display: inline-block;
+        z-index: 1;
+	}
+	#plan-day {
+		width: 8%;
+		height: 910px;
+		float: left;
+		background-color: gray;
+	}
+	#myplan {
+		width: 15%;
+		height: 910px;
+		float: left;
+		background-color: blue;
+	}
+	#seltrip {
+		width: 17%;
+		height: 910px;
+		float: left;
+		
+	}
+	#folder {
+		width: 40px;
+		height: 40px;
+		z-index: 990;
+		margin-top: 10px;
+		float: left;
+		position: absolute;
+		background-image: url("../images/mapimage/close-btn.png");
+	}
+	#selcity {
+		width: 100%;
+		height: 50px;
+		background-color: blue;
+		color: white;
+	}
