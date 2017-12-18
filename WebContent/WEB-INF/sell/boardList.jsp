@@ -1,3 +1,4 @@
+<%@page import="com.gohere.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -5,9 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var kind = '${make.kind}';
@@ -25,8 +25,8 @@
 		});
 	});
 </script>
-<link href="../css/boardList.css" rel="stylesheet">
-<link href="../css/sell_kate.css" rel="stylesheet">
+<link href="../css/sell/boardList.css" rel="stylesheet">
+<link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 </head>
 <body>
@@ -72,25 +72,24 @@
 					</tr>
 				</c:forEach>
 			</table>
-			
+
 			<div class="pageNum">
-			<c:if test="${page.curBlock gt 1}">
-				<input type="button" class="num" title="${page.startNum-1}"
-					value="[이전]">
-			</c:if>
-			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<input type="button" class="num" title="${i}" value="${i}">
-			</c:forEach>
-			<c:if test="${page.curBlock lt page.totalBlock}">
-				<input type="button" class="num" title="${page.lastNum+1}"
-					value="[다음]">
-			</c:if>
+				<c:if test="${page.curBlock gt 1}">
+					<input type="button" class="num" title="${page.startNum-1}"
+						value="[이전]">
+				</c:if>
+				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+					<input type="button" class="num" title="${i}" value="${i}">
+				</c:forEach>
+				<c:if test="${page.curBlock lt page.totalBlock}">
+					<input type="button" class="num" title="${page.lastNum+1}"
+						value="[다음]">
+				</c:if>
 			</div>
 		</article>
 		<div>
 			<form name="frm" action="./${board}List.sell">
-				<input type="hidden" name="curPage"> 
-				<select name="kind">
+				<input type="hidden" name="curPage"> <select name="kind">
 					<option class="kind" value="title">TITLE</option>
 					<option class="kind" value="writer">WRITER</option>
 					<option class="kind" value="contents">CONTENTS</option>
@@ -98,13 +97,16 @@
 				<button class="btn btn-success">Search</button>
 			</form>
 		</div>
-		
-		<div class="write">
-		<a href="./${board}Write.sell">WRITE</a>
-		</div>
+
+		<c:if test="${not empty member}">
+			<div class="write">
+				<a href="./${board}Write.sell">WRITE</a>
+			</div>
+		</c:if>
+
 	</section>
 	<!--Main 끝-->
-	
+
 	<!--Footer 시작-->
 	<footer></footer>
 	<!--Footer 끝-->

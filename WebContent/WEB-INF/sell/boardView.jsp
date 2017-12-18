@@ -19,8 +19,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link href="../css/boardView.css" rel="stylesheet">
-<link href="../css/sell_kate.css" rel="stylesheet">
+<link href="../css/sell/boardView.css" rel="stylesheet">
+<link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 </head>
 <body>
@@ -65,13 +65,23 @@
 				</tr>
 			</tbody>
 		</table>
-		<a class="btn btn-success" href="./${board}List.sell">List</a> 
-		<a class="btn btn-primary" href="${board}Update.sell?num=${view.num}">Update</a>
-		<a class="btn btn-danger" href="${board}Delete.sell?num=${view.num}">Delete</a>
+		<a class="btn btn-success" href="./${board}List.sell">List</a>
 
-		<div id="btn">
-			<button class="btn btn-secondary">Reply</button>
-		</div>
+		<c:if test="${not empty member && member.email eq 'gohere@gohere.gohere'}">
+			<a class="btn btn-danger" href="${board}Delete.sell?num=${view.num}">Delete</a>
+			<div id="btn">
+				<button class="btn btn-secondary">Reply</button>
+			</div>
+		</c:if>
+
+		<c:if test="${member.name eq view.writer}">
+			<a class="btn btn-primary" href="${board}Update.sell?num=${view.num}">Update</a>
+			<a class="btn btn-danger" href="${board}Delete.sell?num=${view.num}">Delete</a>
+			<div id="btn">
+				<button class="btn btn-secondary">Reply</button>
+			</div>
+		</c:if>
+	
 	</section>
 	<!--Main 끝-->
 

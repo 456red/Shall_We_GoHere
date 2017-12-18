@@ -1,6 +1,7 @@
 package com.gohere.sell;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class SellInquiryWriteService implements Action {
 
 	@Override
-	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
+	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response){
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		if(method.equals("POST")) {
@@ -23,16 +24,23 @@ public class SellInquiryWriteService implements Action {
 
 			String filePath = request.getServletContext().getRealPath("upload");
 			File file = new File(filePath);
-			if(file.exists()) {
+			if(!file.exists()) {
 				file.mkdirs();
 			}
 			int maxSize = 1024*1024*100;
 
-			try {
-				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+			 
+				MultipartRequest multi=null;
+				try {
+					multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				inquiryDTO.setWriter(multi.getParameter("writer"));
 				inquiryDTO.setTitle(multi.getParameter("title"));
 				inquiryDTO.setContents(multi.getParameter("contents"));
+				System.out.println(inquiryDTO.getWriter());
 
 				Enumeration<Object> names = multi.getFileNames();
 				while(names.hasMoreElements()) {
@@ -40,9 +48,7 @@ public class SellInquiryWriteService implements Action {
 					String fName = multi.getFilesystemName(name);
 					String oName = multi.getOriginalFileName(name);
 				}
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+			
 
 			int num = 0;
 			try {
@@ -60,6 +66,7 @@ public class SellInquiryWriteService implements Action {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
+			System.out.println(result);
 			
 			if(result>0) {
 				request.setAttribute("message", "글이 등록 되었습니다.");

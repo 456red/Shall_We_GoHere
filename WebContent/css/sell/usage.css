@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@charset "UTF-8";
 
 * {
 	margin: 0;
@@ -10,30 +9,28 @@
 	margin-top: 64px;
 	width: 100%;
 	height: 400px;
-	background-color: lime;
+	
 }
 
-.wrap img {
+.wrap img{
 	width: 100%;
 	height: 400px;
 }
 
 .title_board {
 	width: 100%;
-	height: 100px;
-	background-color: yellow;
+	height: 200px;
 }
 
 .title {
 	width: 1500px;
-	height: 100px;
+	height: 200px;
 	margin: 0 auto;
-	background-color: silver;
 }
 
 .title li {
 	text-align: center;
-	padding-top: 17px;
+	padding-top: 70px;
 	list-style-type: none;
 	color: #363636;
 	font-size: 40px;
@@ -43,74 +40,53 @@
 	font-family: "Malgun Gothic", "맑은 고딕";
 }
 
-.list_board {
-	width: 100%;
-	height: 1000px;
-	background-color: purple;
-}
-
-.product_board {
+.use_board {
 	width: 1903px;
-	height: 1650px;
+	height: 1850px;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	background-color: fuchsia;
 }
 
-.product_board_2 {
+.use_board_2 {
 	width: 1500px;
-	height: 1600px;
+	height: 1450px;
 	margin: 0 auto;
-	position: relative;
-	background-color: white;
 }
 
-.product_title {
+.use_title {
 	color: #363636;
 	font-size: 27px;
 	font-weight: bold;
 	width: 100%;
-	text-align: center;
+	text-align: left;
 	font-family: "Malgun Gothic", "맑은 고딕";
-	text-decoration: underline;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
 
-.product_2_title {
+.use_title_2 {
 	color: #363636;
 	font-size: 27px;
 	font-weight: bold;
 	width: 100%;
-	text-align: center;
-	padding-top: 100px;
+	text-align: left;
 	font-family: "Malgun Gothic", "맑은 고딕";
-	text-decoration: underline;
+	padding-top: 20px;
 	padding-bottom: 20px;
 }
 
-.p {
-	width: 300px;
-	height: 300px;
+.exchange_board {
+	width: 1400px;
+	height: 800px;
+	margin: 0 auto;
+	background-color: maroon;
 }
 
-.product_list {
-	width: 1500px;
-	height: 430px;
-	padding-top: 35px;
-	overflow: hidden;
-	background-color: navy;
-}
-
-.product_box {
-	float: left;
-	margin-left: 150px;
-}
-
-.box_title {
-	font-weight: bold;
-	border-bottom: 1px solid #ddd;
-	max-width: 300px;
+.product_board {
+	width: 1400px;
+	height: 800px;
+	margin: 0 auto;
+	background-color: maroon;
 }
 
 footer {

@@ -12,7 +12,7 @@
 	background: url("../images/sell/sell_main.jpg")
 }
 
-.wrap{
+.wrap {
 	width: 1000px;
 	margin: 0 auto;
 	position: relative;
@@ -92,7 +92,7 @@
 	font-weight: bold;
 	width: 100%;
 	text-align: center;
-	font-family: "Malgun Gothic","맑은 고딕";
+	font-family: "Malgun Gothic", "맑은 고딕";
 	text-decoration: underline;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -105,16 +105,16 @@
 	width: 100%;
 	text-align: center;
 	padding-top: 100px;
-	font-family: "Malgun Gothic","맑은 고딕";
+	font-family: "Malgun Gothic", "맑은 고딕";
 	text-decoration: underline;
 	padding-bottom: 20px;
-	
 }
 
 .p {
 	width: 300px;
 	height: 300px;
 }
+
 .product_list {
 	width: 1500px;
 	height: 430px;
@@ -133,7 +133,7 @@
 	max-width: 300px;
 }
 
-footer{
+footer {
 	width: 100%;
 	height: 150px;
 	background-color: lime;

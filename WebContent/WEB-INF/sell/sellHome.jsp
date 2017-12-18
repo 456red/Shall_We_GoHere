@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 <style type="text/css">
 </style>
-<link href="../css/sell.css" rel="stylesheet">
-<link href="../css/sell_kate.css" rel="stylesheet">
+<link href="../css/sell/sellHome.css" rel="stylesheet">
+<link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 </head>
 <body>

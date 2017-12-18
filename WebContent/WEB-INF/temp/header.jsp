@@ -46,7 +46,7 @@
 					<li><a href="#">여행정보</a></li>
 					<li><a href="#">여행일정</a></li>
 					<li><a href="#">여행후기</a></li>
-					<li><a href="./sell/sellHome.sell">상품</a></li>
+					<li><a href="<%=request.getContextPath()%>/sell/sellHome.sell">상품</a></li>
 				</ul>
 			</nav>
 		</div>

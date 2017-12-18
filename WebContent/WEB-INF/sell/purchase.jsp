@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link href="../css/exchange.css" rel="stylesheet">
-<link href="../css/sell_kate.css" rel="stylesheet">
+<link href="../css/sell/purchase.css" rel="stylesheet">
+<link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 </head>
 <body>

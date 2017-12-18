@@ -8,8 +8,8 @@
 <style type="text/css">
 
 </style>
-<link href="../css/exchange_box.css" rel="stylesheet">
-<link href="../css/sell_kate.css" rel="stylesheet">
+<link href="../css/sell/exchange_box.css" rel="stylesheet">
+<link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 </head>
 <body>
