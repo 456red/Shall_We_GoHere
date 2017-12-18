@@ -1,0 +1,120 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.main {
+	margin-top: 64px;
+	width: 100%;
+	height: 400px;
+	background-color: lime;
+}
+
+.wrap img {
+	width: 100%;
+	height: 400px;
+}
+
+.title_board {
+	width: 100%;
+	height: 100px;
+	background-color: yellow;
+}
+
+.title {
+	width: 1500px;
+	height: 100px;
+	margin: 0 auto;
+	background-color: silver;
+}
+
+.title li {
+	text-align: center;
+	padding-top: 17px;
+	list-style-type: none;
+	color: #363636;
+	font-size: 40px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	font-family: "Malgun Gothic", "맑은 고딕";
+}
+
+.list_board {
+	width: 100%;
+	height: 1000px;
+	background-color: purple;
+}
+
+.product_board {
+	width: 1903px;
+	height: 1650px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: fuchsia;
+}
+
+.product_board_2 {
+	width: 1500px;
+	height: 1600px;
+	margin: 0 auto;
+	position: relative;
+	background-color: white;
+}
+
+.product_title {
+	color: #363636;
+	font-size: 27px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	font-family: "Malgun Gothic", "맑은 고딕";
+	text-decoration: underline;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.product_2_title {
+	color: #363636;
+	font-size: 27px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	padding-top: 100px;
+	font-family: "Malgun Gothic", "맑은 고딕";
+	text-decoration: underline;
+	padding-bottom: 20px;
+}
+
+.p {
+	width: 300px;
+	height: 300px;
+}
+
+.product_list {
+	width: 1500px;
+	height: 430px;
+	padding-top: 35px;
+	overflow: hidden;
+	background-color: navy;
+}
+
+.product_box {
+	float: left;
+	margin-left: 150px;
+}
+
+.box_title {
+	font-weight: bold;
+	border-bottom: 1px solid #ddd;
+	max-width: 300px;
+}
+
+footer {
+	width: 100%;
+	height: 150px;
+	background-color: lime;
+}

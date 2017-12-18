@@ -1,12 +1,24 @@
 @charset "UTF-8";
+<<<<<<< HEAD
 
+=======
+   * {
+      margin: 0;
+      padding: 0;
+   }
+>>>>>>> 0a7bfeaa44095e45c4e94df37b6a8de1f699efcf
 	header {
 		width: 2000px;
 		height: 64px;
 		background-color: white;
 		position: fixed;
 		top: 0px;
+<<<<<<< HEAD
 		z-index: 999;
+=======
+		z-index: 990;
+		background-color: white;
+>>>>>>> 0a7bfeaa44095e45c4e94df37b6a8de1f699efcf
 	
 	}
 	#mainMenu {
@@ -55,4 +67,7 @@
 		float: left;
 		
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 0a7bfeaa44095e45c4e94df37b6a8de1f699efcf

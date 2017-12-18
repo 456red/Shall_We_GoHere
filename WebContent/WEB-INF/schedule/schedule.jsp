@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
 <link href="./css/schedule.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<link href="../css/schedule.css" rel="stylesheet">
 <script type="text/javascript">
 $(function(){
 	$("#goMap").click(function(){
@@ -20,7 +20,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<%@ include file="./temp/header.jsp" %>
+	<%@ include file="../temp/header.jsp" %>
 	<div id = "schmain">
 		<p>누구나 쉽게 일정을 계획할 수 있습니다.</p>
 		<input type ="button" id="goMap" value="새로운 일정 만들기">

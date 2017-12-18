@@ -5,9 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <script type="text/javascript">
 	$(document).ready(function() {
 		// Add smooth scrolling to all links in navbar + footer link
+=======
+<link href="./css/header.css" rel="stylesheet">
+>>>>>>> 0a7bfeaa44095e45c4e94df37b6a8de1f699efcf
 
 		$(window).scroll(function() {
 			$(".slideanim").each(function() {
@@ -33,6 +37,7 @@
 <link href="./css/section.css" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
 	<%@include file="./WEB-INF/temp/header.jsp"%>
 	<section id="main">
 		<section id="subMain">
@@ -153,6 +158,10 @@
 		</div>
 
 	</section>
+=======
+
+<%@include file="./WEB-INF/temp/header.jsp" %>
+>>>>>>> 0a7bfeaa44095e45c4e94df37b6a8de1f699efcf
 
 
 </body>
