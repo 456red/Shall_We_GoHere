@@ -1,35 +1,37 @@
 @charset "UTF-8";
+#myPageAll{
+	padding-top:200px;
+	padding-left:500px;
+	background-color: blue;
+	width:2000px;
+	height:1000px;
+}
 #myPage{
-	margin-top:200px;
-	margin-left:500px;
-	background-color: red;
+	background-color:red;
 	width:900px;
 	height:500px;
 }
+
 #myPage div{
 	float:left;
+	padding-left:45px;
+	padding-top:30px;
 	margin-top:50px;
 	margin-left:50px;
-	background-color: yellow;
-	width:200px;
+	background-color: #f6f6f6;
+	width:150px;
 	height:150px;
+	
 }
-
-  body {
-      font: 400 15px Lato, sans-serif;
-      line-height: 1.8;
-      color: #818181;
-  }
-  h4 {
-  	
-      font-size: 12px;
-      text-transform: uppercase;
-      color: #303030;
-      font-weight: 600;
-      margin-bottom: 30px;
-  }
  
-  
-  a:hover{
+ h4{
+ 	color:black;
+ }
+ h5{
+ 	color:black;
+ }
+ 
+  div :hover{
   	color: red;
+  	text-decoration: none;
   }

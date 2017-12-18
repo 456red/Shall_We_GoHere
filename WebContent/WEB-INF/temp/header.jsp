@@ -29,7 +29,7 @@
 
 	<header>
 		<div id="mainMenu">
-			<div id="logo"><a href="#"><img alt="" src="<%=request.getContextPath()%>/images/common/logo.png"></a></div>
+			<div id="logo"><a href="<%=request.getContextPath()%>/main.jsp"><img alt="" src="<%=request.getContextPath()%>/images/common/logo.png"></a></div>
 			<nav id="category">
 				<ul>
 					<li><a href="#">여행정보</a></li>
