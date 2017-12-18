@@ -6,16 +6,17 @@
 	}
 	
 	#schmain {
-		width: 100%;
+		width: 2000px;
 		height: 600px;
 		background-color: #87CEFA;
+		margin-top: 64px;
 	}
 	.td {
 		border-right: 1px solid black;
 		text-align: center;
 	}
 	#tb{
-		width: 60%;
+		width: 1200px;
 		height: 200px;
 		margin: 0 auto;
 		border:  1px solid black;
@@ -24,10 +25,10 @@
 		margin: 0 auto;
 	}
 	#txt1 {
-		width: 60%;
+		width: 1200px;
 		height: 100px;
 	}
-	.scbtxt b {
+	.scbtxt >b {
 		font-size: 24px;
 		margin-left: 35%;
 	}
