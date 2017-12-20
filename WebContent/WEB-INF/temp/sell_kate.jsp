@@ -1,20 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
 <body>
+	<section class="main">
+		<article class="board">
+		<div id="demo" class="carousel slide" data-ride="carousel">
+
+			<ul class="carousel-indicators">
+				<li data-target="#demo" data-slide-to="0" class="active"></li>
+				<li data-target="#demo" data-slide-to="1"></li>
+				<li data-target="#demo" data-slide-to="2"></li>
+			</ul>
+
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="<%=request.getContextPath()%>/images/sell/a.PNG" alt="a"
+						width="1400" height="500">
+				</div>
+				<div class="carousel-item">
+					<img src="<%=request.getContextPath()%>/images/sell/d.PNG" alt="d"
+						width="1400" height="500">
+				</div>
+				<div class="carousel-item">
+					<img src="<%=request.getContextPath()%>/images/sell/z.PNG" alt="z"
+						width="1400" height="500">
+				</div>
+			</div>
+
+			<a class="carousel-control-prev" href="#demo" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+		</article>
+	</section>
+
 	<section class="kate_board">
 		<ul class="kate_line">
-			<li><a href="./usage.sell">이용 방법</a></li>
-			<li><a href="./exchange.sell">상품 교환</a></li>
-			<li><a href="./purchase.sell">상품 구매</a></li>
-			<li><a href="./reviewList.sell">상품 후기</a></li>
-			<li><a href="./inquiryList.sell">상품 문의</a></li>
+			<li id="s">
+			<a href="#"> 
+			<img alt="" src="<%=request.getContextPath()%>/images/sell/kate.PNG" 
+			width="27" height="25" class="icon">ALL</a>
+			</li>
+			<li><a href="./usage.sell">USAGE</a></li>
+			<li><a href="./exchange.sell">EXCHANGE</a></li>
+			<li><a href="./purchase.sell">PURCHASE</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">COMMUNITY</a>
+				<div class="dropdown-content">
+					<a href="./reviewList.sell">REVIEW</a> 
+					<a href="./inquiryList.sell">Q＆A</a>
+				</div></li>
 		</ul>
 	</section>
 </body>
-</html>

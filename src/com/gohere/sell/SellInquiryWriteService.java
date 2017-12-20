@@ -24,7 +24,7 @@ public class SellInquiryWriteService implements Action {
 
 			String filePath = request.getServletContext().getRealPath("upload");
 			File file = new File(filePath);
-			if(!file.exists()) {
+			if(file.exists()) {
 				file.mkdirs();
 			}
 			int maxSize = 1024*1024*100;
@@ -40,8 +40,8 @@ public class SellInquiryWriteService implements Action {
 				inquiryDTO.setWriter(multi.getParameter("writer"));
 				inquiryDTO.setTitle(multi.getParameter("title"));
 				inquiryDTO.setContents(multi.getParameter("contents"));
-				System.out.println(inquiryDTO.getWriter());
 
+				
 				Enumeration<Object> names = multi.getFileNames();
 				while(names.hasMoreElements()) {
 					String name = (String)names.nextElement();
@@ -66,7 +66,6 @@ public class SellInquiryWriteService implements Action {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
-			System.out.println(result);
 			
 			if(result>0) {
 				request.setAttribute("message", "글이 등록 되었습니다.");

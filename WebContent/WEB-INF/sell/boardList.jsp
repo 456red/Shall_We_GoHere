@@ -6,14 +6,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var kind = '${make.kind}';
 		$(".kind").each(function() { //반복문
 			if ($(this).val() == kind) {
-				$(this).attr("selected", true);
+				$(this).attr("selected", "selected");
 			}
 
 		});
@@ -23,6 +33,7 @@
 			document.frm.curPage.value = cur;
 			document.frm.submit();
 		});
+		
 	});
 </script>
 <link href="../css/sell/boardList.css" rel="stylesheet">
@@ -30,79 +41,97 @@
 <link href="../css/header.css" rel="stylesheet">
 </head>
 <body>
+
 	<!--Header 시작-->
 	<%@include file="../temp/header.jsp"%>
 	<!--Header 끝-->
 
 	<!--Main 시작-->
-	<section class="main">
-		<article class="wrap">
-			<img alt="" src="../images/sell/point_1.PNG">
-		</article>
-	</section>
 
 	<%@include file="../temp/sell_kate.jsp"%>
 
 	<div class="title_board">
 		<ul class="title">
-			<li>＜${board} List＞</li>
+			<li>${board} List</li>
 		</ul>
 	</div>
 
 	<section class="list_board">
 		<article class="list_board_2">
-			<table id="t" class="table table-hover">
+			<table class="list_table">
 				<tr>
-					<th>NUM</th>
-					<th>TITLE</th>
-					<th>WRITER</th>
-					<th>DATE</th>
-					<th>HIT</th>
+					<th scope="col">
+						<div class="tb_no">NO</div>
+					</th>
+					<th scope="col">
+						<div class="tb_title">TITLE</div>
+					</th>
+					<th scope="col">
+						<div class="tb_name">NAME</div>
+					</th>
+					<th scope="col">
+						<div class="tb_date">DATE</div>
+					</th>
+					<th scope="col">
+						<div class="tb_hit">HIT</div>
+					</th>
+
 				</tr>
 
 				<c:forEach items="${list}" var="i">
 					<tr>
-						<td>${i.num}</td>
-						<td><c:catch>
-								<c:forEach begin="1" end="${i.depth}">--</c:forEach>
-							</c:catch> <a href="./${board}View.sell?num=${i.num}">${i.title}</a></td>
-						<td>${i.writer}</td>
-						<td>${i.reg_date}</td>
-						<td>${i.hit}</td>
+						<td>
+							<div class="tb_no" id="td_no">${i.num}</div>
+						</td>
+						<td>
+							<div class="tb_title" id="td_title">
+								<c:catch>
+									<c:forEach begin="1" end="${i.depth}">--</c:forEach>
+								</c:catch>
+								<a href="./${board}View.sell?num=${i.num}">${i.title}</a>
+							</div>
+						</td>
+						<td><div class="tb_name" id="td_name">${i.writer}</div></td>
+						<td><div class="tb_date" id="td_date">${i.reg_date}</div></td>
+						<td><div class="tb_hit" id="td_hit">${i.hit}</div></td>
 					</tr>
 				</c:forEach>
 			</table>
 
+			<div>
+				<form name="frm" action="./${board}List.sell">
+					<input type="hidden" name="curPage"> 
+					<select name="kind" class="text">
+						<option class="kind" value="title">TITLE</option>
+						<option class="kind" value="writer">NAME</option>
+						<option class="kind" value="contents">CONTENTS</option>
+					</select> 
+					<input type="text" name="search" value="${make.search}">
+					<button id="btn">Search</button>
+					
+					<c:if test="${not empty member}">
+						<div class="write">
+							<a href="./${board}Write.sell">WRITE</a>
+						</div>
+					</c:if>
+				</form>
+			</div>
+
 			<div class="pageNum">
 				<c:if test="${page.curBlock gt 1}">
 					<input type="button" class="num" title="${page.startNum-1}"
-						value="[이전]">
+						value="＜">
 				</c:if>
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 					<input type="button" class="num" title="${i}" value="${i}">
 				</c:forEach>
 				<c:if test="${page.curBlock lt page.totalBlock}">
 					<input type="button" class="num" title="${page.lastNum+1}"
-						value="[다음]">
+						value="＞">
 				</c:if>
 			</div>
 		</article>
-		<div>
-			<form name="frm" action="./${board}List.sell">
-				<input type="hidden" name="curPage"> <select name="kind">
-					<option class="kind" value="title">TITLE</option>
-					<option class="kind" value="writer">WRITER</option>
-					<option class="kind" value="contents">CONTENTS</option>
-				</select> <input type="text" name="search" value="${make.search}">
-				<button class="btn btn-success">Search</button>
-			</form>
-		</div>
 
-		<c:if test="${not empty member}">
-			<div class="write">
-				<a href="./${board}Write.sell">WRITE</a>
-			</div>
-		</c:if>
 
 	</section>
 	<!--Main 끝-->

@@ -13,17 +13,27 @@ public class SellReviewViewService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ReviewDAO reviewDAO = new ReviewDAO();
 		BoardDTO boardDTO = null;
+		int hit = 0;
 		int num = 0;
+		
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
+		try {
+			hit = reviewDAO.hit(num);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		ReviewDTO reviewDTO = new ReviewDTO();
+		reviewDTO.setHit(hit);
 		
 		try {
 			boardDTO = reviewDAO.selectOne(num);
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(boardDTO != null) {

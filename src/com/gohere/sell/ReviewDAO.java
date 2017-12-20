@@ -14,13 +14,12 @@ public class ReviewDAO implements BoardDAO {
 	@Override //Insert
 	public int insert(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into s_review values(?,?,?,?,sysdate,?,0,0)"; 
+		String sql = "insert into s_review values(?,?,?,?,sysdate,0,0)"; 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, boardDTO.getNum());
 		st.setString(2, boardDTO.getTitle());
 		st.setString(3, boardDTO.getWriter());
 		st.setString(4, boardDTO.getContents());
-		st.setInt(5, boardDTO.getHit());
 		int result = st.executeUpdate();
 
 		DBConnector.disConnect(st, con);
@@ -69,9 +68,10 @@ public class ReviewDAO implements BoardDAO {
 			reviewDTO.setContents(rs.getString("contents"));
 			reviewDTO.setReg_date(rs.getDate("r_date"));
 			reviewDTO.setHit(rs.getInt("hit"));
+			reviewDTO.setUp(rs.getInt("up"));
 		}
 		DBConnector.disConnect(st, con, rs);
-		return null;
+		return reviewDTO;
 	}
 
 	@Override //SelectList
@@ -131,7 +131,7 @@ public class ReviewDAO implements BoardDAO {
 	//GetNum
 	public int getNum() throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "select sell_seq.nextval from dual";
+		String sql = "select s_re_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();

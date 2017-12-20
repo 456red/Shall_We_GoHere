@@ -41,6 +41,7 @@ public class SellInquiryService implements Action {
 			request.setAttribute("board", "inquiry");
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageing);
+			request.setAttribute("make", makeRow);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

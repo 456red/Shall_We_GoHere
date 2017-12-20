@@ -41,6 +41,7 @@ public class SellReviewService implements Action {
 			request.setAttribute("board", "review");
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageing);
+			request.setAttribute("make", makeRow);
 
 		} catch (Exception e) {
 			// TODO: handle exception

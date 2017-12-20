@@ -131,7 +131,7 @@ public class InquiryDAO implements BoardDAO {
 	//GetNum
 	public int getNum() throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "select sell_seq.nextval from dual";
+		String sql = "select s_in_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();

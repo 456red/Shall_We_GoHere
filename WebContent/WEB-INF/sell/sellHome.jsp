@@ -5,8 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+
+
 <link href="../css/sell/sellHome.css" rel="stylesheet">
 <link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
@@ -18,19 +24,6 @@
 		<!--Header 끝-->
 
 		<!--Main 시작-->
-		<section class="main">
-			<article class="wrap">
-				<div class="main_title">＜상품 교환 / 구매＞</div>
-				<div class="main_desc">Point 사용! / 안심 거래!</div>
-				<div class="search_area">
-					<input class="search_input" placeholder="상품으로 검색" type="search">
-					<div class="latest_search">
-						추천 상품 : <a href="#" class="latest_a">티켓, </a> <a href="#"
-							class="latest_a">여행 용품</a>
-					</div>
-				</div>
-			</article>
-		</section>
 
 		<%@include file="../temp/sell_kate.jsp"%>
 

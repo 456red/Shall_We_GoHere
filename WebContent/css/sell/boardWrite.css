@@ -5,28 +5,15 @@
 	padding: 0;
 }
 
-.main {
-	margin-top: 64px;
-	width: 100%;
-	height: 400px;
-}
-
-.wrap img {
-	width: 100%;
-	height: 400px;
-}
-
 .title_board {
 	width: 100%;
 	height: 200px;
-	background-color: green;
 }
 
 .title {
 	width: 1500px;
 	height: 200px;
 	margin: 0 auto;
-	background-color: gray;
 }
 
 .title li {
@@ -43,15 +30,17 @@
 
 .write_board {
 	width: 100%;
-	margin: 0 auto;
-	background-color: fuchsia;
+	padding-bottom: 50px;
 }
 
 .write_board_2 {
-	width: 1500px;
+	width: 60%;
 	margin: 0 auto;
-	margin-top: 100px;
 	text-align: center;
+}
+
+#savebutton {
+	margin-top: 20px;
 }
 
 footer {
