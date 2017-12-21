@@ -9,12 +9,12 @@ import java.util.List;
 import com.gohere.util.DBConnector;
 import com.gohere.util.MakeRow;
 
-public class InquiryDAO implements BoardDAO {
+public class NoticeDAO implements BoardDAO {
 
 	@Override //Insert
 	public int insert(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into s_inquiry values(?,?,?,?,sysdate,0)"; 
+		String sql = "insert into s_notice values(?,?,?,?,sysdate,0)"; 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, boardDTO.getNum());
 		st.setString(2, boardDTO.getTitle());
@@ -29,7 +29,7 @@ public class InquiryDAO implements BoardDAO {
 	@Override //Update
 	public int update(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "update s_inquiry set title=?, contents=? where num=?";
+		String sql = "update s_notice set title=?, contents=? where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, boardDTO.getTitle());
 		st.setString(2, boardDTO.getContents());
@@ -43,7 +43,7 @@ public class InquiryDAO implements BoardDAO {
 	@Override //Delete
 	public int delete(int num) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="delete s_inquiry where num=?";
+		String sql ="delete s_notice where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		int result = st.executeUpdate();
@@ -55,23 +55,22 @@ public class InquiryDAO implements BoardDAO {
 	@Override //SelectOne
 	public BoardDTO selectOne(int num) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from s_inquiry where num=?";
+		String sql = "select * from s_notice where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		ResultSet rs = st.executeQuery();
-		InquiryDTO inquiryDTO = null;
+		NoticeDTO noticeDTO = null;
 		if(rs.next()) {
-			
-			inquiryDTO = new InquiryDTO();
-			inquiryDTO.setNum(rs.getInt("num"));
-			inquiryDTO.setTitle(rs.getString("title"));
-			inquiryDTO.setWriter(rs.getString("writer"));
-			inquiryDTO.setContents(rs.getString("contents"));
-			inquiryDTO.setReg_date(rs.getDate("r_date"));
-			inquiryDTO.setHit(rs.getInt("hit"));
+			noticeDTO = new NoticeDTO();
+			noticeDTO.setNum(rs.getInt("num"));
+			noticeDTO.setTitle(rs.getString("title"));
+			noticeDTO.setWriter(rs.getString("writer"));
+			noticeDTO.setContents(rs.getString("contents"));
+			noticeDTO.setReg_date(rs.getDate("r_date"));
+			noticeDTO.setHit(rs.getInt("hit"));
 		}
 		DBConnector.disConnect(st, con, rs);
-		return inquiryDTO;
+		return noticeDTO;
 	}
 
 	@Override //SelectList
@@ -79,8 +78,8 @@ public class InquiryDAO implements BoardDAO {
 		List<BoardDTO> ar = new ArrayList<>();
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
-				+ "(select rownum R, I.* from "
-				+ "(select * from s_inquiry where "+makeRow.getKind()+" like ? order by num desc) I) "
+				+ "(select rownum R, N.* from "
+				+ "(select * from s_notice where "+makeRow.getKind()+" like ? order by num desc) N) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+makeRow.getSearch()+"%");
@@ -89,14 +88,14 @@ public class InquiryDAO implements BoardDAO {
 		ResultSet rs = st.executeQuery();
 
 		while(rs.next()) {
-			InquiryDTO inquiryDTO = new InquiryDTO();
-			inquiryDTO.setNum(rs.getInt("num"));
-			inquiryDTO.setTitle(rs.getString("title"));
-			inquiryDTO.setWriter(rs.getString("writer"));
-			inquiryDTO.setContents(rs.getString("contents"));
-			inquiryDTO.setReg_date(rs.getDate("r_date"));
-			inquiryDTO.setHit(rs.getInt("hit"));
-			ar.add(inquiryDTO);
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setNum(rs.getInt("num"));
+			noticeDTO.setTitle(rs.getString("title"));
+			noticeDTO.setWriter(rs.getString("writer"));
+			noticeDTO.setContents(rs.getString("contents"));
+			noticeDTO.setReg_date(rs.getDate("r_date"));
+			noticeDTO.setHit(rs.getInt("hit"));
+			ar.add(noticeDTO);
 		}
 		DBConnector.disConnect(st, con, rs);
 		return ar;
@@ -105,7 +104,7 @@ public class InquiryDAO implements BoardDAO {
 	@Override //GetTot
 	public int getTotCount(MakeRow makeRow) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from s_inquiry where "+makeRow.getKind()+" like ?";
+		String sql = "select nvl(count(num), 0) from s_notice where "+makeRow.getKind()+" like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+makeRow.getSearch()+"%");
 		ResultSet rs = st.executeQuery();
@@ -119,7 +118,7 @@ public class InquiryDAO implements BoardDAO {
 	@Override //Hit
 	public int hit(int num) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "update s_inquiry set hit=hit+1 where num=?";
+		String sql = "update s_notice set hit=hit+1 where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 
@@ -127,11 +126,10 @@ public class InquiryDAO implements BoardDAO {
 		DBConnector.disConnect(st, con);;
 		return result;
 	}
-
-	//GetNum
+	
 	public int getNum() throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "select s_in_seq.nextval from dual";
+		String sql = "select board_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();

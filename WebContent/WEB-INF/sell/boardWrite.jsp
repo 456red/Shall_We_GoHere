@@ -5,10 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -75,40 +79,41 @@
 
 	<div class="title_board">
 		<ul class="title">
-			<li>＜${board} Write＞</li>
+			<li>${board}</li>
 		</ul>
 	</div>
 
-	<section class="write_board">
-		<article class="write_board_2">
-			<form id="frm" action="./${board}Write.sell" method="post" enctype="multipart/form-data">
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="Writer">Writer</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" readonly="readonly"
-							value="${member.name}" id="Writer" name="writer">
-					</div>
+	<section class="w_board">
+		<article class="w_board_2">
+			<form id="frm" action="./${board}Write.sell" method="post"
+				enctype="multipart/form-data">
+				<table class="w_table">
+					<thead>
+						<tr>
+							<th class="t_box" id="name">NAME</th>
+							<td><input type="text" readonly="readonly"
+								class="form-control" value="${member.name}" id="Writer"
+								name="writer"></td>
+						</tr>
+						<tr>
+							<th class="t_box" id="tit">TITLE</th>
+							<td><input type="text" class="form-control" id="Title"
+								placeholder="Enter Title" name="title"></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th class="t_box" id="con">CONTENT</th>
+							<td id="t_con" colspan="4"><textarea cols="163"
+									name="contents" id="contents"></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="btns">
+					<button class="w_btn" id="savebutton">Write</button>
 				</div>
 
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="Title">Title</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="Title"
-							placeholder="Enter Title" name="title">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="Contents">Contents</label>
-					<div class="col-sm-10">
-						<textarea rows="" cols="128" name="contents" id="contents"></textarea>
-					</div>
-				</div>
-				
-				<p>
-					<button type="submit" class="btn btn-info" id="savebutton">Write</button>
-				</p>
-			
 			</form>
 		</article>
 	</section>

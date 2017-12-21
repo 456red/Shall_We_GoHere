@@ -71,40 +71,39 @@
 
 	<div class="title_board">
 		<ul class="title">
-			<li>＜${board} Update＞</li>
+			<li>${board}</li>
 		</ul>
 	</div>
 
-	<section class="update_board">
-		<article class="update_board_2">
+	<section class="up_board">
+		<article class="up_board_2">
 			<form action="./${board}Update.sell" method="post">
-				<input type="text" value="${view.num}" name="num">
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="Writer">Writer</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" readonly="readonly"
-							value="${member.name}" id="Writer" name="writer">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="Title">Title</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" value="${view.title}"
+				<input type="hidden" value="${view.num}" name="num">
+				<table class="up_table">
+					<thead>
+					<tr>
+						<th class="t_box" id="name">NAME</th>
+						<td><input type="text"  readonly="readonly" class="form-control"
+							value="${member.name}" id="Writer" name="writer"></td>
+					</tr>
+					<tr>
+						<th class="t_box" id="tit">TITLE</th>
+						<td><input type="text" value="${view.title}" class="form-control"
 							id="Title" placeholder="Enter Title" name="title">
-					</div>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="t_box" id="con">CONTENT</th>
+						<td id="t_con" colspan="4"><textarea cols="163" name="contents" id="contents">${view.contents}</textarea></td>
+					</tr>
+				</tbody>
+				</table>
+		
+				<div>
+					<button class="up_btn" id="savebutton">Update</button>
 				</div>
-
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="Contents">Contents</label>
-					<div class="col-sm-10">
-						<textarea cols="128" name="contents" id="contents">${view.contents}</textarea>
-					</div>
-				</div>
-
-				<p>
-					<button class="btn btn-info" id="savebutton">Update</button>
-				</p>
 
 			</form>
 		</article>

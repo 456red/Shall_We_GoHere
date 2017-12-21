@@ -52,7 +52,7 @@
 
 	<div class="title_board">
 		<ul class="title">
-			<li>${board} List</li>
+			<li>${board}</li>
 		</ul>
 	</div>
 
@@ -75,6 +75,12 @@
 					<th scope="col">
 						<div class="tb_hit">HIT</div>
 					</th>
+					
+					<c:if test="${board eq 'review'}">
+					<th scope="col">
+						<div class="tb_up">UP</div>
+					</th>
+					</c:if>
 
 				</tr>
 
@@ -94,6 +100,10 @@
 						<td><div class="tb_name" id="td_name">${i.writer}</div></td>
 						<td><div class="tb_date" id="td_date">${i.reg_date}</div></td>
 						<td><div class="tb_hit" id="td_hit">${i.hit}</div></td>
+						
+						<c:if test="${board eq 'review'}">
+						<td><div class="tb_up" id="td_hit">${i.up}</div></td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</table>
@@ -107,10 +117,10 @@
 						<option class="kind" value="contents">CONTENTS</option>
 					</select> 
 					<input type="text" name="search" value="${make.search}">
-					<button id="btn">Search</button>
+					<button id="s_btn">Search</button>
 					
 					<c:if test="${not empty member}">
-						<div class="write">
+						<div class="w_btn">
 							<a href="./${board}Write.sell">WRITE</a>
 						</div>
 					</c:if>

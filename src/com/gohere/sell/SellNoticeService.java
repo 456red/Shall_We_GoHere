@@ -11,7 +11,7 @@ import com.gohere.util.MakePage;
 import com.gohere.util.MakeRow;
 import com.gohere.util.Pageing;
 
-public class SellInquiryService implements Action {
+public class SellNoticeService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -28,17 +28,17 @@ public class SellInquiryService implements Action {
 		makeRow.setKind(request.getParameter("kind"));
 		makeRow.setSearch(request.getParameter("search"));
 		
-		InquiryDAO  inquiryDAO = new InquiryDAO();
+		NoticeDAO  noticeDAO = new NoticeDAO();
 		int totalCount;
 		try {
-			totalCount = inquiryDAO.getTotCount(makeRow);
+			totalCount = noticeDAO.getTotCount(makeRow);
 			MakePage makePage = new MakePage(curPage, totalCount);
 			makeRow = makePage.getMakeRow(makeRow);
-			List<BoardDTO> ar = inquiryDAO.selectList(makeRow);
+			List<BoardDTO> ar = noticeDAO.selectList(makeRow);
 			
 			Pageing pageing = makePage.pageing();
 			
-			request.setAttribute("board", "inquiry");
+			request.setAttribute("board", "notice");
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageing);
 			request.setAttribute("make", makeRow);
@@ -52,5 +52,4 @@ public class SellInquiryService implements Action {
 		
 		return actionFoward;
 	}
-
 }

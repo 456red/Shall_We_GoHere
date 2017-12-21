@@ -9,11 +9,21 @@
 				<li data-target="#demo" data-slide-to="0" class="active"></li>
 				<li data-target="#demo" data-slide-to="1"></li>
 				<li data-target="#demo" data-slide-to="2"></li>
+				<li data-target="#demo" data-slide-to="3"></li>
+				<li data-target="#demo" data-slide-to="4"></li>
 			</ul>
 
 			<div class="carousel-inner">
 				<div class="carousel-item active">
 					<img src="<%=request.getContextPath()%>/images/sell/a.PNG" alt="a"
+						width="1400" height="500">
+				</div>
+				<div class="carousel-item">
+					<img src="<%=request.getContextPath()%>/images/sell/d.PNG" alt="d"
+						width="1400" height="500">
+				</div>
+				<div class="carousel-item">
+					<img src="<%=request.getContextPath()%>/images/sell/z.PNG" alt="z"
 						width="1400" height="500">
 				</div>
 				<div class="carousel-item">
@@ -49,7 +59,8 @@
 				<a href="#" class="dropbtn">COMMUNITY</a>
 				<div class="dropdown-content">
 					<a href="./reviewList.sell">REVIEW</a> 
-					<a href="./inquiryList.sell">Q＆A</a>
+					<a href="./noticeList.sell">NOTICE</a>
+					<a href="./qnaList.sell">Q＆A</a>
 				</div></li>
 		</ul>
 	</section>

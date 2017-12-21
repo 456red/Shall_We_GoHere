@@ -5,10 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -27,6 +29,9 @@
 <link href="../css/sell/boardView.css" rel="stylesheet">
 <link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
+<script type="text/javascript">
+	<c
+</script>
 </head>
 <body>
 	<!--Header 시작-->
@@ -39,49 +44,56 @@
 
 	<div class="title_board">
 		<ul class="title">
-			<li>＜${board} View＞</li>
+			<li>${board}</li>
 		</ul>
 	</div>
 
 	<section class="view_board">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>TITLE</th>
-					<th>WRITER</th>
-					<th>DATE</th>
-					<th>HIT</th>
-				</tr>
-				<tr>
-					<th>${view.title}</th>
-					<th>${view.writer}</th>
-					<th>${view.reg_date}</th>
-					<th>${view.hit}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td colspan="4">${view.contents}</td>
-				</tr>
-			</tbody>
-		</table>
-		<a class="btn btn-success" href="./${board}List.sell">List</a>
+		<article class="view_board_2">
+			<table class="view_table">
+				<thead>
+					<tr>
+						<td id="t_title">${view.title}</td>
+					</tr>
+					<tr>
+						<th class="t_box">NAME</th>
+						<td id="t_writer">${view.writer}</td>
+						<th class="t_box">DATE</th>
+						<td id="t_date">${view.reg_date}</td>
+						<th></th>
+						<th id="t_box_hit">HIT</th>
+						<td id="t_hit">${view.hit}</td>
+					</tr>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="t_con" colspan="4">${view.contents}</td>
+					</tr>
+				</tbody>
+			</table>
 
-		<c:if test="${not empty member && member.email eq 'gohere@gohere.gohere'}">
-			<a class="btn btn-danger" href="${board}Delete.sell?num=${view.num}">Delete</a>
-			<div id="btn">
-				<button class="btn btn-secondary">Reply</button>
+			<div class="b_btn">
+				<c:if test="${member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
+					<a href="${board}Update.sell?num=${view.num}">Update</a>
+					<a href="${board}Delete.sell?num=${view.num}">Delete</a>
+				</c:if>
+				
+				<c:if test="${board ne 'notice'}">
+					<c:if test="${board eq 'qna' and member.name eq view.writer}">
+						<a href="#">Reply</a>
+					</c:if>
+				</c:if>
+				<c:if test="${board eq 'review' and not empty member}">
+						<a href="#">Reply</a>
+					</c:if>
+				
+				<div id="b_list">
+					<a href="./${board}List.sell">List</a>
+				</div>
 			</div>
-		</c:if>
-
-		<c:if test="${member.name eq view.writer}">
-			<a class="btn btn-primary" href="${board}Update.sell?num=${view.num}">Update</a>
-			<a class="btn btn-danger" href="${board}Delete.sell?num=${view.num}">Delete</a>
-			<div id="btn">
-				<button class="btn btn-secondary">Reply</button>
-			</div>
-		</c:if>
-	
+		</article>
 	</section>
 	<!--Main 끝-->
 

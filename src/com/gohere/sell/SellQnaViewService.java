@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.gohere.action.Action;
 import com.gohere.action.ActionFoward;
 
-public class SellInquiryViewService implements Action {
+public class SellQnaViewService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		InquiryDAO inquiryDAO = new InquiryDAO();
+		QnaDAO qnaDAO = new QnaDAO();
 		BoardDTO boardDTO = null;
 		int hit = 0;
 		int num = 0;
@@ -22,22 +22,22 @@ public class SellInquiryViewService implements Action {
 			e.printStackTrace();
 		}
 		try {
-			hit = inquiryDAO.hit(num);
+			hit = qnaDAO.hit(num);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		InquiryDTO inquiryDTO = new InquiryDTO();
-		inquiryDTO.setHit(hit);
+		QnaDTO qnaDTO = new QnaDTO();
+		qnaDTO.setHit(hit);
 		
 		try {
-			boardDTO = inquiryDAO.selectOne(num);
+			boardDTO = qnaDAO.selectOne(num);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(boardDTO != null) {
-			request.setAttribute("board", "inquiry");
+			request.setAttribute("board", "qna");
 			request.setAttribute("view", boardDTO);
 			actionFoward.setPath("../WEB-INF/sell/boardView.jsp");
 		}
