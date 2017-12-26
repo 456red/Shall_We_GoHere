@@ -16,6 +16,7 @@ public class SellReviewService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		ReviewDAO reviewDAO = new ReviewDAO();
 		int curPage = 1;
 
 		try {
@@ -23,12 +24,11 @@ public class SellReviewService implements Action {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
+		
 		MakeRow makeRow = new MakeRow();
 		makeRow.setKind(request.getParameter("kind"));
 		makeRow.setSearch(request.getParameter("search"));
 
-		ReviewDAO reviewDAO = new ReviewDAO();
 		int totalCount;
 		try {
 			totalCount = reviewDAO.getTotCount(makeRow);

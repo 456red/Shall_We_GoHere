@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <script
@@ -12,25 +15,38 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <link href="../css/sell/boardView.css" rel="stylesheet">
 <link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 <script type="text/javascript">
-	<c
+$(document).ready(function() {
+		$(".r").click(function() {
+			$(".r_form").show();
+		});
+
+		$("#no").click(function() {
+			$(".r_form").hide();
+			window.location.reload();
+		});
+
+		var count = 0;
+		$(".up").click(function() {
+			$.get("../sell/reviewUp.sell?num=${view.num}", function(data) {
+				count++;
+				if (count == 1) {
+					var up = $("#t_up").text() * 1 + 1;
+					$("#t_up").text(up);
+				}else{
+					alert("UP은 하루에 1번씩만 가능합니다.");
+					$(".up").off();
+				} 
+			});
+		});
+
+	});
 </script>
 </head>
 <body>
@@ -60,9 +76,12 @@
 						<td id="t_writer">${view.writer}</td>
 						<th class="t_box">DATE</th>
 						<td id="t_date">${view.reg_date}</td>
-						<th></th>
 						<th id="t_box_hit">HIT</th>
 						<td id="t_hit">${view.hit}</td>
+						<c:if test="${board eq 'review'}">
+						<th id="t_box_up">♥</th>
+						<td id="t_up">${view.up}</td>
+						</c:if>
 					</tr>
 					<tr>
 					</tr>
@@ -74,6 +93,19 @@
 				</tbody>
 			</table>
 
+			<div class="r_form" style="display: none;">
+				<div class="r_title">
+					<label for="comment">Reply</label>
+				</div>
+				<div class="r_con">
+					<textarea class="form-control" rows="4" id="contents"></textarea>
+					<div>
+						<button class="r_btn">yes</button>
+						<button class="r_btn" id="no">no</button>
+					</div>
+				</div>
+			</div>
+
 			<div class="b_btn">
 				<c:if test="${member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
 					<a href="${board}Update.sell?num=${view.num}">Update</a>
@@ -82,11 +114,13 @@
 				
 				<c:if test="${board ne 'notice'}">
 					<c:if test="${board eq 'qna' and member.name eq view.writer}">
-						<a href="#">Reply</a>
+						<button class="r">Reply</button>
 					</c:if>
 				</c:if>
+				
 				<c:if test="${board eq 'review' and not empty member}">
-						<a href="#">Reply</a>
+						<button class="r">Reply</button>
+						<button class="up">♥</button>
 					</c:if>
 				
 				<div id="b_list">

@@ -32,7 +32,7 @@
 }
 
 .view_board {
-	width: 100%; 
+	width: 100%;
 	padding: 50px 0;
 }
 
@@ -73,7 +73,7 @@ tr {
 	font-family: "Nanum Gothic", 돋움;
 }
 
-#t_title{
+#t_title {
 	width: 1200px;
 	height: 50px;
 	text-align: center;
@@ -83,62 +83,154 @@ tr {
 	border-bottom: 3px solid #e5e5e5;
 }
 
-.t_box{
+.t_box {
 	width: 60px;
 	text-align: right;
 	border-bottom: 2px solid #e5e5e5;
 }
 
-#t_writer{
+#t_writer {
 	width: 920px;
 	border-bottom: 2px solid #e5e5e5;
 }
 
-#t_date{
+#t_date {
 	width: 120px;
 	border-bottom: 2px solid #e5e5e5;
 }
 
-#t_box_hit{
+#t_box_hit {
 	width: 40px;
 	text-align: right;
 	border-bottom: 2px solid #e5e5e5;
 }
 
-#t_hit{
+#t_hit {
 	width: 50px;
 	border-bottom: 2px solid #e5e5e5;
 }
 
-#t_con{
+#t_box_up {
+	width: 30px;
+	text-align: right;
+	color: red;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_up {
+	width: 20px;
+	padding-right: 15px;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_con {
 	width: 1140px;
 	border-bottom: 3px solid #e5e5e5;
 }
 
-.b_btn{
+.r_table {
+	margin-top: 10px;
+}
+
+.r_title {
+	width: 1140px;
+	height: 40px;
+	color: #000000;
+	font-size: 14px;
+	padding: 6px 15px 0;
+	font-family: sans-serif;
+}
+
+.r_con {
+	width: 100%;
+	padding-bottom: 20px;
+	border-bottom: 3px solid #e5e5e5;
+}
+
+#contents {
+	width: 95%;
+	margin-left: 12px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.r_btn{
+	display: inline-block;
+	width: 50px;
+	height: 30px;
+	font-size: 14px;
+	font-family: sans-serif;
+	text-align: center;
+	color: rgb(99, 99, 99);
+	border: 1px solid rgb(214, 214, 214);
+	background-color: rgb(255, 255, 255);
+	margin-left: 12px;
+	padding-bottom: 5px;
+}
+
+.r_btn:hover{
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: gray;
+}
+
+.b_btn {
 	margin-top: 15px;
 }
 
 .b_btn a{
 	display: inline-block;
 	width: 70px;
-    height: 30px;
-    padding-top: 3px;
-    line-height: 20px;
-    font-size: 13px;
-    font-family: sans-serif;
-    text-align: center;
-    color: rgb(99, 99, 99);
-    border: 1px solid rgb(214, 214, 214);
-    border-image: initial;
-    background-color: rgb(255, 255, 255);
+	height: 30px;
+	padding-top: 3px;
+	line-height: 20px;
+	font-size: 13px;
+	font-family: sans-serif;
+	text-align: center;
+	color: rgb(99, 99, 99);
+	border: 1px solid rgb(214, 214, 214);
+	border-image: initial;
+	background-color: rgb(255, 255, 255);
 }
 
-.b_btn a:hover{
+.b_btn a:hover {
 	color: white;
 	font-weight: bold;
-    text-decoration: none;
+	text-decoration: none;
 	background-color: gray;
+}
+
+.r, .up{
+	display: inline-block;
+	width: 70px;
+	height: 30px;
+	padding-bottom: 2px;
+	font-size: 13px;
+	font-family: sans-serif;
+	text-align: center;
+	color: rgb(99, 99, 99);
+	border: 1px solid rgb(214, 214, 214);
+	border-image: initial;
+	background-color: rgb(255, 255, 255);
+}
+
+.r:hover {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: gray;
+}
+
+.up{
+	width: 30px;
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.up:hover{
+	color: red;
+	text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
 }
 
 #b_list {

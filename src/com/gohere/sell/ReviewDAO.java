@@ -96,6 +96,7 @@ public class ReviewDAO implements BoardDAO {
 			reviewDTO.setContents(rs.getString("contents"));
 			reviewDTO.setReg_date(rs.getDate("r_date"));
 			reviewDTO.setHit(rs.getInt("hit"));
+			reviewDTO.setUp(rs.getInt("up"));
 			ar.add(reviewDTO);
 		}
 		DBConnector.disConnect(st, con, rs);
@@ -139,6 +140,18 @@ public class ReviewDAO implements BoardDAO {
 
 		DBConnector.disConnect(st, con, rs);
 		return num;
+	}
+	
+	//UP
+	public int up(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "update s_review set up=up+1 where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
 	}
 
 }
