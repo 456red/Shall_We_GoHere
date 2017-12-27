@@ -5,8 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gohere.action.Action;
 import com.gohere.action.ActionFoward;
+import com.gohere.member.MemberDTO;
 
-public class SellUpService implements Action {
+public class SellReviewUpService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -15,16 +16,20 @@ public class SellUpService implements Action {
 		
 		int num = 0;
 		num = Integer.parseInt(request.getParameter("num"));
-		
+		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+		int result =0;
 		try {
-			reviewDAO.up(num);
+			reviewDAO.select(num, memberDTO.getEmail());
+			result = reviewDAO.upsel(num);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		
+		
 		actionFoward.setCheck(true);
-		request.setAttribute("up", 1);
+		request.setAttribute("up", result);
 		actionFoward.setPath("../WEB-INF/common/reviewUp.jsp");
 		
 		

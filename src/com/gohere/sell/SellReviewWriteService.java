@@ -28,26 +28,26 @@ public class SellReviewWriteService implements Action {
 			}
 			int maxSize = 1024*1024*100;
 
-			 
-				MultipartRequest multi=null;
-				try {
-					multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
+			MultipartRequest multi=null;
+			try {
+				multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 				reviewDTO.setWriter(multi.getParameter("writer"));
 				reviewDTO.setTitle(multi.getParameter("title"));
 				reviewDTO.setContents(multi.getParameter("contents"));
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
-				
-				Enumeration<Object> names = multi.getFileNames();
-				while(names.hasMoreElements()) {
-					String name = (String)names.nextElement();
-					String fName = multi.getFilesystemName(name);
-					String oName = multi.getOriginalFileName(name);
-				}
-			
+
+			Enumeration<Object> names = multi.getFileNames();
+			while(names.hasMoreElements()) {
+				String name = (String)names.nextElement();
+				String fName = multi.getFilesystemName(name);
+				String oName = multi.getOriginalFileName(name);
+			}
+
 
 			int num = 0;
 			try {
@@ -65,7 +65,7 @@ public class SellReviewWriteService implements Action {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
-			
+
 			if(result>0) {
 				request.setAttribute("message", "글이 등록 되었습니다.");
 				request.setAttribute("path", "./reviewList.sell");

@@ -4,23 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- jQuery library -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 
-
-
-<link href="../css/sell/boardView.css" rel="stylesheet">
-<link href="../css/sell/sell_kate.css" rel="stylesheet">
-<link href="../css/header.css" rel="stylesheet">
 <script type="text/javascript">
 $(document).ready(function() {
 		$(".r").click(function() {
@@ -29,25 +21,26 @@ $(document).ready(function() {
 
 		$("#no").click(function() {
 			$(".r_form").hide();
-			window.location.reload();
+			$("#contents").val('');
+		});
+		
+		$("#yes").click(function() {
+			$(".r_form").hide();
+			$(".r_view").append('<div class="rv_board"><div class="rv_name">agni@naver.com(test)</div><div><button class="rv_btn" id="rv_d">삭제</button><button class="rv_btn" id="rv_u">수정</button></div><div class="rv_date">2017-12-27</div><div class="rv_con_board"><div class="rv_con">댓글이다</div></div></div>');
 		});
 
-		var count = 0;
+		
 		$(".up").click(function() {
 			$.get("../sell/reviewUp.sell?num=${view.num}", function(data) {
-				count++;
-				if (count == 1) {
-					var up = $("#t_up").text() * 1 + 1;
-					$("#t_up").text(up);
-				}else{
-					alert("UP은 하루에 1번씩만 가능합니다.");
-					$(".up").off();
-				} 
+				$("t_up").html(data);
 			});
 		});
 
 	});
 </script>
+<link href="../css/sell/boardView.css" rel="stylesheet">
+<link href="../css/sell/sell_kate.css" rel="stylesheet">
+<link href="../css/header.css" rel="stylesheet">
 </head>
 <body>
 	<!--Header 시작-->
@@ -79,8 +72,8 @@ $(document).ready(function() {
 						<th id="t_box_hit">HIT</th>
 						<td id="t_hit">${view.hit}</td>
 						<c:if test="${board eq 'review'}">
-						<th id="t_box_up">♥</th>
-						<td id="t_up">${view.up}</td>
+							<th id="t_box_up">♥</th>
+							<td id="t_up">${view.up}</td>
 						</c:if>
 					</tr>
 					<tr>
@@ -93,36 +86,42 @@ $(document).ready(function() {
 				</tbody>
 			</table>
 
+			
 			<div class="r_form" style="display: none;">
 				<div class="r_title">
 					<label for="comment">Reply</label>
 				</div>
 				<div class="r_con">
 					<textarea class="form-control" rows="4" id="contents"></textarea>
-					<div>
-						<button class="r_btn">yes</button>
+				<div>
+						<button class="r_btn" id="yes">yes</button>
 						<button class="r_btn" id="no">no</button>
 					</div>
 				</div>
 			</div>
 
+			<div class="r_view">
+				
+			</div>
+
 			<div class="b_btn">
-				<c:if test="${member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
+				<c:if
+					test="${member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
 					<a href="${board}Update.sell?num=${view.num}">Update</a>
 					<a href="${board}Delete.sell?num=${view.num}">Delete</a>
 				</c:if>
-				
+
 				<c:if test="${board ne 'notice'}">
 					<c:if test="${board eq 'qna' and member.name eq view.writer}">
 						<button class="r">Reply</button>
 					</c:if>
 				</c:if>
-				
+
 				<c:if test="${board eq 'review' and not empty member}">
-						<button class="r">Reply</button>
-						<button class="up">♥</button>
-					</c:if>
-				
+					<button class="r">Reply</button>
+					<button class="up">♥</button>
+				</c:if>
+
 				<div id="b_list">
 					<a href="./${board}List.sell">List</a>
 				</div>

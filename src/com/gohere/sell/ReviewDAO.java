@@ -143,15 +143,46 @@ public class ReviewDAO implements BoardDAO {
 	}
 	
 	//UP
-	public int up(int num) throws Exception {
+	public int up(int num,String email) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "update s_review set up=up+1 where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
-
 		int result = st.executeUpdate();
+		
+		sql = "insert into s_up values(?,sysdate)";
+		st = con.prepareStatement(sql);
+		st.setString(1, email);
+		result = st.executeUpdate();
+		
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	public void select(int num,String email) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from s_up where to_char(up_date,'YY/MM/DD')=to_char(sysdate,'YY/MM/DD')and email=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, email);
+		ResultSet rs = st.executeQuery();
+		
+		if(rs.next()) {
+			System.out.println("Áö±Ý¤·¤§");
+		}else {
+			this.up(num, email);
+		}
+		
+	}
+	public int upsel(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select up from s_review where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		return rs.getInt(1);
+	}
+	
+	
+	
 
 }

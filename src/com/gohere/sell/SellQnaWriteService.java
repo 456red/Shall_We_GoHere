@@ -31,13 +31,13 @@ public class SellQnaWriteService implements Action {
 			MultipartRequest multi=null;
 			try {
 				multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+				qnaDTO.setWriter(multi.getParameter("writer"));
+				qnaDTO.setTitle(multi.getParameter("title"));
+				qnaDTO.setContents(multi.getParameter("contents"));
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			qnaDTO.setWriter(multi.getParameter("writer"));
-			qnaDTO.setTitle(multi.getParameter("title"));
-			qnaDTO.setContents(multi.getParameter("contents"));
 
 
 			Enumeration<Object> names = multi.getFileNames();

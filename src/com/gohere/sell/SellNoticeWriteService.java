@@ -20,32 +20,32 @@ public class SellNoticeWriteService implements Action {
 		if(method.equals("POST")) {
 			NoticeDTO noticeDTO = new NoticeDTO();
 			NoticeDAO noticeDAO = new NoticeDAO();
-			
+
 			String filePath = request.getServletContext().getRealPath("upload");
 			File file = new File(filePath);
 			if(file.exists()) {
 				file.mkdirs();
 			}
 			int maxSize = 1024*1024*100;
-			
+
 			MultipartRequest multi = null;
 			try {
 				multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+				noticeDTO.setWriter(multi.getParameter("writer"));
+				noticeDTO.setTitle(multi.getParameter("title"));
+				noticeDTO.setContents(multi.getParameter("contents"));
 			} catch (Exception e) {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
-			noticeDTO.setWriter(multi.getParameter("writer"));
-			noticeDTO.setTitle(multi.getParameter("title"));
-			noticeDTO.setContents(multi.getParameter("contents"));
-			
+
 			Enumeration<Object> names = multi.getFileNames();
 			while(names.hasMoreElements()) {
 				String name = (String)names.nextElement();
 				String fName = multi.getFilesystemName(name);
 				String oName = multi.getOriginalFileName(name);
 			}
-			
+
 			int num = 0;
 			try {
 				num = noticeDAO.getNum();
@@ -54,7 +54,7 @@ public class SellNoticeWriteService implements Action {
 				// TODO: handle exception
 			}
 			noticeDTO.setNum(num);
-			
+
 			int result = 0;
 			try {
 				result = noticeDAO.insert(noticeDTO);
@@ -62,7 +62,7 @@ public class SellNoticeWriteService implements Action {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
-			
+
 			if(result>0) {
 				request.setAttribute("message", "글이 등록 되었습니다.");
 				request.setAttribute("path", "./noticeList.sell");
@@ -74,7 +74,7 @@ public class SellNoticeWriteService implements Action {
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/common/result.jsp");
 			}
-			
+
 		}else { //GET
 			request.setAttribute("board", "notice");
 			actionFoward.setCheck(true);
