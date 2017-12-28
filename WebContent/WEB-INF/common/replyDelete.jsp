@@ -2,10 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
-	<c:if test="${check}">
-		alert("UP은 게시글 당 하루에 1번씩만 가능합니다.");
-	</c:if>	
+		alert("댓글이 삭제 되었습니다.");
 </script>
 <body>
-	${up}
+	${r_delete}
 </body>

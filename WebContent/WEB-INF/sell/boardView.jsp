@@ -25,14 +25,24 @@ $(document).ready(function() {
 		});
 		
 		$("#yes").click(function() {
-			$(".r_form").hide();
-			$(".r_view").append('<div class="rv_board"><div class="rv_name">agni@naver.com(test)</div><div><button class="rv_btn" id="rv_d">삭제</button><button class="rv_btn" id="rv_u">수정</button></div><div class="rv_date">2017-12-27</div><div class="rv_con_board"><div class="rv_con">댓글이다</div></div></div>');
+			if($("#contents").val() == ''){
+				alert("글을 입력해주세요.")
+			}else{
+				$(".r_form").hide();
+				$(".r_view").show();
+				var con = $("#contents").val();
+				
+				$.get("../sell/replyWrite.sell?contents="+con, function(data) {
+					$(".rv_board").append(data);
+					
+				});
+			}
 		});
 
 		
 		$(".up").click(function() {
 			$.get("../sell/reviewUp.sell?num=${view.num}", function(data) {
-				$("t_up").html(data);
+				$("#t_up").html(data);
 			});
 		});
 
@@ -100,8 +110,11 @@ $(document).ready(function() {
 				</div>
 			</div>
 
-			<div class="r_view">
-				
+			<div class="r_view" style="display: none;">
+				<div class="rv_board">
+					
+					
+				</div>
 			</div>
 
 			<div class="b_btn">

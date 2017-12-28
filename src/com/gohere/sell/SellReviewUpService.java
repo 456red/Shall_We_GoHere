@@ -18,20 +18,18 @@ public class SellReviewUpService implements Action {
 		num = Integer.parseInt(request.getParameter("num"));
 		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
 		int result =0;
+		boolean check = true;
 		try {
-			reviewDAO.select(num, memberDTO.getEmail());
+			check = reviewDAO.select(num, memberDTO.getEmail());
 			result = reviewDAO.upsel(num);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
 		actionFoward.setCheck(true);
+		request.setAttribute("check", check);
 		request.setAttribute("up", result);
 		actionFoward.setPath("../WEB-INF/common/reviewUp.jsp");
-		
 		
 		return actionFoward;
 	}

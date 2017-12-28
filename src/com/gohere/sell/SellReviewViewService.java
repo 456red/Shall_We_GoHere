@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gohere.action.Action;
 import com.gohere.action.ActionFoward;
+import com.gohere.member.MemberDTO;
 
 public class SellReviewViewService implements Action {
 
@@ -13,6 +14,8 @@ public class SellReviewViewService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ReviewDAO reviewDAO = new ReviewDAO();
 		BoardDTO boardDTO = null;
+		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+		
 		int hit = 0;
 		int num = 0;
 		
@@ -39,6 +42,7 @@ public class SellReviewViewService implements Action {
 		if(boardDTO != null) {
 			request.setAttribute("board", "review");
 			request.setAttribute("view", boardDTO);
+			request.setAttribute("member", memberDTO);
 			actionFoward.setPath("../WEB-INF/sell/boardView.jsp");
 		}
 		actionFoward.setCheck(true);
