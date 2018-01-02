@@ -24,9 +24,12 @@ public class SellReplyDeleteService implements Action {
 			// TODO: handle exception
 		}
 		
-		actionFoward.setCheck(true);
-		request.setAttribute("r_delete", result);
-		actionFoward.setPath("../WEB-INF/common/replyDelete.jsp");
+		if(result>0) {
+			request.setAttribute("path", "./reviewList.sell");
+			actionFoward.setCheck(true);
+			request.setAttribute("r_delete", result);
+			actionFoward.setPath("../WEB-INF/common/replyDelete.jsp");
+		}
 		
 		return actionFoward;
 	}

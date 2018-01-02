@@ -16,6 +16,8 @@ public class SellReplyWriteService implements Action {
 		ReplyDAO replyDAO = new ReplyDAO();
 		
 		int num = 0;
+		int num2 = 0;
+		
 		try {
 			num = replyDAO.getNum();
 		} catch (Exception e) {
@@ -23,13 +25,15 @@ public class SellReplyWriteService implements Action {
 			// TODO: handle exception
 		}
 		replyDTO.setNum(num);
+		replyDTO.setP_num(num2);
 		
 		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+		ReviewDTO reviewDTO = (ReviewDTO)request.getSession().getAttribute("review");
 		replyDTO.setContents(request.getParameter("contents"));
 		
 		int result = 0;
 		try {
-			result = replyDAO.insert(replyDTO, memberDTO.getEmail(), memberDTO.getName());
+			result = replyDAO.insert(replyDTO, memberDTO.getEmail(), memberDTO.getName(), reviewDTO.getNum());
 		} catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception

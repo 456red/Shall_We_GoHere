@@ -200,7 +200,7 @@ tr {
 	width: 100%;
 	margin-top: 10px;
 	padding-bottom: 10px;
-	border-bottom: 3px solid #e5e5e5;
+	border-bottom: 0;
 }
 
 .rv_board{

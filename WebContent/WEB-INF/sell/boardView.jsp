@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 		$(".r").click(function() {
+		$(".r_view").css("border-bottom", "3px solid white");	
 			$(".r_form").show();
 		});
 
@@ -29,16 +31,14 @@ $(document).ready(function() {
 				alert("글을 입력해주세요.")
 			}else{
 				$(".r_form").hide();
-				$(".r_view").show();
 				var con = $("#contents").val();
 				
 				$.get("../sell/replyWrite.sell?contents="+con, function(data) {
-					$(".rv_board").append(data);
-					
+					$(".rv_board").prepend(data);
+					$("#contents").val('');
 				});
 			}
 		});
-
 		
 		$(".up").click(function() {
 			$.get("../sell/reviewUp.sell?num=${view.num}", function(data) {
@@ -96,7 +96,26 @@ $(document).ready(function() {
 				</tbody>
 			</table>
 
-			
+
+			<div class="r_view">
+				<div class="rv_board">
+					<c:forEach items="${r_list}" var="r_i">
+						<div class="rv_name">${r_i.email}(${r_i.name})</div>
+
+						<c:if test="${member.name eq r_i.name || member.email eq 'gohere@gohere.gohere'}">
+							<div>
+							<a class="rv_btn" id="rv_d" href="../sell/replyDelete.sell?num=${r_i.num}">삭제</a>
+							</div>
+						</c:if>
+						<div class="rv_date">${r_i.rp_date}</div>
+						<div class="rv_con_board">
+							<div class="rv_con">${r_i.contents}</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+
+
 			<div class="r_form" style="display: none;">
 				<div class="r_title">
 					<label for="comment">Reply</label>
@@ -107,13 +126,6 @@ $(document).ready(function() {
 						<button class="r_btn" id="yes">yes</button>
 						<button class="r_btn" id="no">no</button>
 					</div>
-				</div>
-			</div>
-
-			<div class="r_view" style="display: none;">
-				<div class="rv_board">
-					
-					
 				</div>
 			</div>
 

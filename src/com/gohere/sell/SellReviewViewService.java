@@ -1,5 +1,7 @@
 package com.gohere.sell;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,6 +16,8 @@ public class SellReviewViewService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ReviewDAO reviewDAO = new ReviewDAO();
 		BoardDTO boardDTO = null;
+		ReplyDAO replyDAO = new ReplyDAO();
+		ArrayList<ReplyDTO> ar = null;
 		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
 		
 		int hit = 0;
@@ -35,6 +39,8 @@ public class SellReviewViewService implements Action {
 		
 		try {
 			boardDTO = reviewDAO.selectOne(num);
+			ar = replyDAO.selectList();
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,6 +48,7 @@ public class SellReviewViewService implements Action {
 		if(boardDTO != null) {
 			request.setAttribute("board", "review");
 			request.setAttribute("view", boardDTO);
+			request.setAttribute("r_list", ar);
 			request.setAttribute("member", memberDTO);
 			actionFoward.setPath("../WEB-INF/sell/boardView.jsp");
 		}

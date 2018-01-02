@@ -3,20 +3,22 @@ package com.gohere.sell;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.gohere.util.DBConnector;
 
 public class ReplyDAO {
 	
 	//Insert
-	public int insert(ReplyDTO replyDTO, String email, String name) throws Exception{
+	public int insert(ReplyDTO replyDTO, String email, String name, int p_num) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into s_reply values(?,?,?,?,sysdate)";
+		String sql = "insert into s_reply values(?,?,?,?,sysdate,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, replyDTO.getNum());
 		st.setString(2, email);
 		st.setString(3, name);
 		st.setString(4, replyDTO.getContents());
+		st.setInt(5, p_num);
 		int result = st.executeUpdate();
 		
 		DBConnector.disConnect(st, con);
@@ -48,6 +50,28 @@ public class ReplyDAO {
 		return result;
 	}
 	
+	//SelectList
+	public ArrayList<ReplyDTO> selectList() throws Exception{
+		ArrayList<ReplyDTO> list = new ArrayList<>();
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from s_reply order by num desc";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		
+		while(rs.next()) {
+			ReplyDTO replyDTO = new ReplyDTO();
+			replyDTO.setNum(rs.getInt("num"));
+			replyDTO.setEmail(rs.getString("email"));
+			replyDTO.setName(rs.getString("name"));
+			replyDTO.setContents(rs.getString("contents"));
+			replyDTO.setRp_date(rs.getDate("rp_date"));
+			replyDTO.setP_num(rs.getInt("p_num"));
+			list.add(replyDTO);
+		}
+		DBConnector.disConnect(st, con, rs);
+		return list;
+	}
+	
 	//SelectOne
 	public ReplyDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
@@ -63,6 +87,7 @@ public class ReplyDAO {
 			replyDTO.setName(rs.getString("name"));
 			replyDTO.setContents(rs.getString("contents"));
 			replyDTO.setRp_date(rs.getDate("rp_date"));
+			replyDTO.setP_num(rs.getInt("p_num"));
 		}
 		DBConnector.disConnect(st, con, rs);
 		return replyDTO;

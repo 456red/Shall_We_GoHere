@@ -28,7 +28,7 @@ public class SellReviewDeleteService implements Action {
 			request.setAttribute("message", "삭제 되었습니다.");
 			request.setAttribute("path", "./reviewList.sell");
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/common/replyWrite.jsp");
+			actionFoward.setPath("../WEB-INF/common/result.jsp");
 
 		}else {
 			request.setAttribute("message", "Fail");

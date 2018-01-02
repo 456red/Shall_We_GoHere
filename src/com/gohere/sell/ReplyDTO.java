@@ -9,6 +9,7 @@ public class ReplyDTO {
 	private String name;
 	private String contents;
 	private Date rp_date;
+	private int p_num;
 	
 	public int getNum() {
 		return num;
@@ -39,6 +40,12 @@ public class ReplyDTO {
 	}
 	public void setRp_date(Date rp_date) {
 		this.rp_date = rp_date;
+	}
+	public int getP_num() {
+		return p_num;
+	}
+	public void setP_num(int p_num) {
+		this.p_num = p_num;
 	}
 	
 }
