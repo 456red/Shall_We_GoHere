@@ -8,15 +8,13 @@
 .list_board {
 	width: 100%;
 	height: 1000px;
-	background-color: purple;
 }
 
 .product_board {
-	width: 1903px;
+	width: 1900px;
 	height: 1650px;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	background-color: fuchsia;
 }
 
 .product_board_2 {
@@ -73,6 +71,29 @@
 	font-weight: bold;
 	border-bottom: 1px solid #ddd;
 	max-width: 300px;
+}
+
+.pageNum {
+	width: 1180px;
+	height: 70px;
+	padding-top: 15px;
+	text-align: center;
+}
+
+.pageNum input {
+	padding: 4px;
+	margin-right: 3px;
+	width: 30px;
+	color: gray;
+	font-size: 14px;
+	border: 1px solid white;
+	background-color: white;
+	font-family: inherit;
+}
+
+.pageNum input:hover {
+	color: black;
+	font-weight: bold;
 }
 
 footer {

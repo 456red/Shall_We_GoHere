@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="rv_name">${r_write.email}(${r_write.name})</div>
+<input type="hidden" name="p_num" id="p_num">
 <c:if test="${member.name eq r_write.name || member.email eq 'gohere@gohere.gohere'}">
 <div>
 	<button class="rv_btn" id="rv_d">삭제</button>

@@ -71,11 +71,11 @@
 					<th scope="col">
 						<div class="tb_hit">HIT</div>
 					</th>
-					
+
 					<c:if test="${board eq 'review'}">
-					<th scope="col">
-						<div class="tb_up">UP</div>
-					</th>
+						<th scope="col">
+							<div class="tb_up">UP</div>
+						</th>
 					</c:if>
 
 				</tr>
@@ -90,15 +90,15 @@
 								<c:catch>
 									<c:forEach begin="1" end="${i.depth}">--</c:forEach>
 								</c:catch>
-								<a href="./${board}View.sell?num=${i.num}">${i.title}</a>
+								<a href="./${board}View.sell?num=${i.num}&b_name=${board}">${i.title}</a>
 							</div>
 						</td>
 						<td><div class="tb_name" id="td_name">${i.writer}</div></td>
 						<td><div class="tb_date" id="td_date">${i.reg_date}</div></td>
 						<td><div class="tb_hit" id="td_hit">${i.hit}</div></td>
-						
+
 						<c:if test="${board eq 'review'}">
-						<td><div class="tb_up" id="td_hit">${i.up}</div></td>
+							<td><div class="tb_up" id="td_hit">${i.up}</div></td>
 						</c:if>
 					</tr>
 				</c:forEach>
@@ -106,15 +106,14 @@
 
 			<div>
 				<form name="frm" action="./${board}List.sell">
-					<input type="hidden" name="curPage"> 
-					<select name="kind" class="text">
+					<input type="hidden" name="curPage"> <select name="kind"
+						class="text">
 						<option class="kind" value="title">TITLE</option>
 						<option class="kind" value="writer">NAME</option>
 						<option class="kind" value="contents">CONTENTS</option>
-					</select> 
-					<input type="text" name="search" value="${make.search}">
+					</select> <input type="text" name="search" value="${make.search}">
 					<button id="s_btn">Search</button>
-					
+
 					<c:if test="${not empty member}">
 						<div class="w_btn">
 							<a href="./${board}Write.sell">WRITE</a>

@@ -18,7 +18,10 @@ public class SellReviewViewService implements Action {
 		BoardDTO boardDTO = null;
 		ReplyDAO replyDAO = new ReplyDAO();
 		ArrayList<ReplyDTO> ar = null;
+		
 		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+		int p_num = Integer.parseInt(request.getParameter("num"));
+		String b_name = request.getParameter("b_name");
 		
 		int hit = 0;
 		int num = 0;
@@ -39,7 +42,7 @@ public class SellReviewViewService implements Action {
 		
 		try {
 			boardDTO = reviewDAO.selectOne(num);
-			ar = replyDAO.selectList();
+			ar = replyDAO.selectList(p_num, b_name);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

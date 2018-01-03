@@ -33,13 +33,13 @@ $(document).ready(function() {
 				$(".r_form").hide();
 				var con = $("#contents").val();
 				
-				$.get("../sell/replyWrite.sell?contents="+con, function(data) {
+				$.get("../sell/replyWrite.sell?contents="+con+"&p_num=${view.num}", function(data) {
 					$(".rv_board").prepend(data);
 					$("#contents").val('');
 				});
 			}
 		});
-		
+
 		$(".up").click(function() {
 			$.get("../sell/reviewUp.sell?num=${view.num}", function(data) {
 				$("#t_up").html(data);
@@ -47,6 +47,7 @@ $(document).ready(function() {
 		});
 
 	});
+	
 </script>
 <link href="../css/sell/boardView.css" rel="stylesheet">
 <link href="../css/sell/sell_kate.css" rel="stylesheet">
@@ -96,24 +97,49 @@ $(document).ready(function() {
 				</tbody>
 			</table>
 
-
 			<div class="r_view">
-				<div class="rv_board">
-					<c:forEach items="${r_list}" var="r_i">
-						<div class="rv_name">${r_i.email}(${r_i.name})</div>
-
-						<c:if test="${member.name eq r_i.name || member.email eq 'gohere@gohere.gohere'}">
-							<div>
-							<a class="rv_btn" id="rv_d" href="../sell/replyDelete.sell?num=${r_i.num}">삭제</a>
+				<c:if test="${board eq 'qna' and member.name eq view.writer}">
+					<div class="rv_board">
+						<c:forEach items="${r_list}" var="r_i">
+							<div class="rv_name">${r_i.email}(${r_i.name})</div>
+							<input type="hidden" name="p_num" id="p_num" value="${view.num}">
+							<c:if
+								test="${member.name eq r_i.name || member.email eq 'gohere@gohere.gohere'}">
+								<div>
+									<a class="rv_btn" id="rv_d"
+										href="../sell/replyDelete.sell?num=${r_i.num}">삭제</a>
+								</div>
+							</c:if>
+							<div class="rv_date">${r_i.rp_date}</div>
+							<div class="rv_con_board">
+								<div class="rv_con">${r_i.contents}</div>
 							</div>
-						</c:if>
-						<div class="rv_date">${r_i.rp_date}</div>
-						<div class="rv_con_board">
-							<div class="rv_con">${r_i.contents}</div>
-						</div>
-					</c:forEach>
-				</div>
+						</c:forEach>
+					</div>
+				</c:if>
+
+				<c:if test="${board eq 'review'}">
+					<div class="rv_board">
+						<c:forEach items="${r_list}" var="r_i">
+							<div class="rv_name">${r_i.email}(${r_i.name})</div>
+							<input type="hidden" name="p_num" id="p_num" value="${view.num}">
+							<c:if
+								test="${member.name eq r_i.name || member.email eq 'gohere@gohere.gohere'}">
+								<div>
+									<a class="rv_btn" id="rv_d"
+										href="../sell/replyDelete.sell?num=${r_i.num}">삭제</a>
+								</div>
+							</c:if>
+							<div class="rv_date">${r_i.rp_date}</div>
+							<div class="rv_con_board">
+								<div class="rv_con">${r_i.contents}</div>
+							</div>
+						</c:forEach>
+					</div>
+				</c:if>
 			</div>
+
+
 
 
 			<div class="r_form" style="display: none;">
