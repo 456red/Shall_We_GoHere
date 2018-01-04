@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="../css/header.css" rel="stylesheet">
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a19c66a46e7e0eef8b10f39d33359eab"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -18,23 +19,13 @@ $(function(){
   
 	var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 	
-	var polyline = new daum.maps.Polyline({
-		map: map,
-		strokeWeight: 3, // 선의 두께
-		strokeColor: '#FF0000', // 선 색
-		strokeOpacity: 0.9, // 선 투명도
-		strokeStyle: 'solid' // 선 스타일
-	});	
-	var path = new Array();
 	var citynum = 0;
 	
 	$("#seoul").on("click", function(){
-		map.setCenter(new daum.maps.LatLng(37.550913, 126.990934));
-		map.setLevel(8, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value="seoul" name="seoul"><span class="sedel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>서울특별시<span class="seminus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="seplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=8 name="level"><input type="hidden" value=37.550913 name="lat"><input type="hidden" value=126.990934 name="lng"><input type="hidden" value="서울시" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="sedel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>서울특별시<span class="seminus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="seplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var ar = $(".plan-date");
 		var j=0;
@@ -47,6 +38,7 @@ $(function(){
 	$("#plan-city").on("click", ".seminus-btn", function(){
 		var a = $(this).attr("title");
 		$("#"+a).text($("#"+a).text()*1-1);
+		$("."+a).val($("."+a).val()*1-1);
 		var ar = $(".plan-date");
 		var j=0;
 		for(var i=0;i<ar.length;i++){
@@ -57,6 +49,7 @@ $(function(){
 	$("#plan-city").on("click", ".seplus-btn", function(){
 		var a = $(this).attr("title");
 		$("#"+a).text($("#"+a).text()*1+1);
+		$("."+a).val($("."+a).val()*1+1);
 		var ar = $(".plan-date");
 		var j=0;
 		for(var i=0;i<ar.length;i++){
@@ -76,12 +69,10 @@ $(function(){
 	}); 
 	
 	$("#gyeonggi").on("click", function(){
-		map.setCenter(new daum.maps.LatLng(37.435819, 127.258403));
-		map.setLevel(10, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value="gyeonggi" name="gyeonggi"><span class="gydel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>경기도<span class="gyminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="gyplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=10 name="level"><input type="hidden" value=37.435819 name="lat"><input type="hidden" value=127.258403 name="lng"><input type="hidden" value="경기도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="gydel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>경기도<span class="gyminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="gyplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -94,6 +85,7 @@ $(function(){
 	$("#plan-city").on("click", ".gyminus-btn", function(){
 		var a = $(this).attr("title");
 		$("#"+a).text($("#"+a).text()*1-1);
+		$("."+a).val($("."+a).val()*1-1);
 		var j=0;
 		var ar = $(".plan-date");
 		for(var i=0;i<ar.length;i++){
@@ -104,6 +96,7 @@ $(function(){
 	$("#plan-city").on("click", ".gyplus-btn", function(){
 		var a = $(this).attr("title");
 		$("#"+a).text($("#"+a).text()*1+1);
+		$("."+a).val($("."+a).val()*1+1);
 		var j=0;
 		var ar = $(".plan-date");
 		for(var i=0;i<ar.length;i++){
@@ -123,12 +116,10 @@ $(function(){
 	});
 	
 	$("#gangwon").on("click", function(){
-		map.setCenter(new daum.maps.LatLng(37.745446, 128.414882));
-		map.setLevel(10, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><span class="gadel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>강원도<span class="gaminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="gaplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=10 name="level"><input type="hidden" value=37.745446 name="lat"><input type="hidden" value=128.414882 name="lng"><input type="hidden" value="강원도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="gadel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>강원도<span class="gaminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="gaplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -170,12 +161,10 @@ $(function(){
 	});
 	
 	$("#chungbuk").on("click", function(){
-		map.setCenter(new daum.maps.LatLng(36.660391, 127.818919));
-		map.setLevel(9, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><span class="cbdel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>충청북도<span class="cbminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="cbplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=9 name="level"><input type="hidden" value=36.660391 name="lat"><input type="hidden" value=127.818919 name="lng"><input type="hidden" value="충청북도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="cbdel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>충청북도<span class="cbminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="cbplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -217,12 +206,10 @@ $(function(){
 	});
 	
 	$("#chungnam").on("click", function(){
-		map.setCenter(new daum.maps.LatLng(36.503702, 126.948530));
-		map.setLevel(10, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><span class="cndel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>충청남도<span class="cnminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="cnplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=10 name="level"><input type="hidden" value=36.503702 name="lat"><input type="hidden" value=126.948530 name="lng"><input type="hidden" value="충청남도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="cndel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>충청남도<span class="cnminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="cnplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -265,12 +252,10 @@ $(function(){
 	
 	
 	$("#gyeongbuk").on("click", function(){
-		map.setCenter(new daum.maps.LatLng(36.372570, 128.795024));
-		map.setLevel(10, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><span class="gbdel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>경상북도<span class="gbminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="gbplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=10 name="level"><input type="hidden" value=36.372570 name="lat"><input type="hidden" value=128.795024 name="lng"><input type="hidden" value="경상북도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="gbdel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>경상북도<span class="gbminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="gbplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -312,12 +297,10 @@ $(function(){
 	});
 	
 	$("#gyeongnam").on("click", function(){
-		map.setCenter(new daum.maps.LatLng(35.326050, 128.269909));
-		map.setLevel(10, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><span class="gndel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>경상남도<span class="gnminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="gnplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=10 name="level"><input type="hidden" value=35.326050 name="lat"><input type="hidden" value=128.269909 name="lng"><input type="hidden" value="경상남도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="gndel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>경상남도<span class="gnminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="gnplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -359,12 +342,10 @@ $(function(){
 	});
 	
 	$("#jeonbuk").click(function(){
-		map.setCenter(new daum.maps.LatLng(35.738028, 127.182091));
-		map.setLevel(10, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><span class="jbdel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>전라북도<span class="jbminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="jbplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=10 name="level"><input type="hidden" value=35.738028 name="lat"><input type="hidden" value=127.182091 name="lng"><input type="hidden" value="전라북도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="jbdel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>전라북도<span class="jbminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="jbplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -406,12 +387,10 @@ $(function(){
 	});
 	
 	$("#jeonnam").click(function(){
-		map.setCenter(new daum.maps.LatLng(34.919679, 126.942912));
-		map.setLevel(10, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><span class="jndel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>전라남도<span class="jnminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="jnplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=10 name="level"><input type="hidden" value=34.919679 name="lat"><input type="hidden" value=126.942912 name="lng"><input type="hidden" value="전라남도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="jndel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>전라남도<span class="jnminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="jnplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -453,12 +432,10 @@ $(function(){
 	});
 	
 	$("#jeju").click(function(){
-		map.setCenter(new daum.maps.LatLng(33.370591, 126.545562));
-		map.setLevel(9, {animate : {duration: 500}});
 		$("#plan").css("display", "inline-block");
 		$("#plan").animate({width: '300px'}, "slow");
 		$("#plan").css("height", "+=40px");
-		$("#plan-city").append('<div class="plan-sel"><span class="jjdel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>제주도<span class="jjminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="jjplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
+		$("#plan-city").append('<div class="plan-sel"><input type="hidden" value=10 name="level"><input type="hidden" value=33.370591 name="lat"><input type="hidden" value=126.545562 name="lng"><input type="hidden" value="제주도" name="city"><input type="hidden" class="'+citynum+'" value=2 name="days"><span class="jjdel-btn" style="cursor:pointer"><img src="../images/mapimage/del-btn.png"></span>제주도<span class="jjminus-btn" title= "'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/minus-btn.png"></span><span class="plan-date" id="'+citynum+'">'+2+'</span>일<span class="jjplus-btn" title="'+citynum+'" style="cursor:pointer"><img src="../images/mapimage/plus-btn.png"></span></div>');
 		citynum = citynum+1;
 		var j=0;
 		var ar = $(".plan-date");
@@ -524,11 +501,12 @@ $(function(){
 	<div id="map">
 		<div id="plan">
 			<div><b>여기 갈래!</b></div>
-			<form action="./planing.jsp" method="post">
-				<p><input type="text" placeholder="여행 제목" name="name"></p>
+			<form action="./planing.schedule" method="post">
+				<p><input type="text" placeholder="여행 제목" name="title"></p>
 				<p id="plan-city"></p>
 				<p>출발일<input type="date" name="date"></p>
-				<p id= "trap-day">총 여행 일수 : 0</p>
+				<p id= "trap-day">
+				총 여행 일수 : 0</p>
 				<hr>
 				<div><input type="button" value="상세 일정 만들기" id="btn"></div>
 			</form>

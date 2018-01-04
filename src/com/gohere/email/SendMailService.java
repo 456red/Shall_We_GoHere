@@ -19,7 +19,7 @@ public class SendMailService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-	    
+	    //네이버 안씀
 	    String email="";
 	    String name="";
 	    try {
@@ -36,8 +36,8 @@ public class SendMailService implements Action {
 	    
 	  //---보내시는 분
         String smtpServer = "smtp.naver.com";
-        final String sendId = "tjddnd0426";   //---네이버 아이디
-        final String sendPass = "tjddnd4359"; //---네이버 비밀번호
+        final String sendId = "";   //---네이버 아이디
+        final String sendPass = ""; //---네이버 비밀번호
         String sendEmailAddress = "tjddnd0426@naver.com" ; //---보내는 사람 이메일주소(네이버)   
         int smtpPort=465;
         

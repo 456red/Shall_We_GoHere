@@ -12,25 +12,40 @@ public class MemberDeleteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = null;
 		String method=request.getMethod();
+		MemberDTO memberDTO = null;
 		
 		if(method.equals("POST")) {
+			memberDTO = new MemberDTO();
 			MemberDAO memberDAO = new MemberDAO();
-			String email=request.getParameter("email");
-			String password=request.getParameter("password");
-			System.out.println(email);
-			System.out.println(password);
+			memberDTO.setEmail(request.getParameter("email"));
+			memberDTO.setPassword(request.getParameter("password"));
+			memberDTO.setReason(request.getParameter("reason"));
+			String [] date=request.getParameter("join_date").split(" ");
+			memberDTO.setJoin_date(date[0]);
+			
+			
+			
 			int result=0;
 			
+			
 			try {
-				result=memberDAO.delete(email, password);
+				result=memberDAO.delete(memberDTO);
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				result=memberDAO.deleteReason(memberDTO);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if(result>0) {
-				request.setAttribute("message", "탈퇴완료1");
-				request.setAttribute("path", "../main.jsp");
 				request.getSession().invalidate();
+				request.setAttribute("member", memberDTO);
+				request.setAttribute("message", "탈퇴완료");
+				request.setAttribute("path", "../main.jsp");
 			}else{
 				request.setAttribute("message", "탈퇴실패");
 				request.setAttribute("path", "./memberMypage.member");

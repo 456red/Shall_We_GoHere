@@ -12,17 +12,25 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
   $(function(){
-	  $('#loginbtn').tooltip({title: "여기갈래!", placement: "right"});
+	
 	  $("#loginbtn").click(function(){
 		   $("form").submit();
+	  })
+
+	  $("#Joinbtn").click(function(){
+		  window.open("<%=request.getContextPath()%>/member/memberJoin.member", "", "top=300, left=750, width=400, height=500");
+	  })
+	  $("#Serchbtn").click(function(){
+		  window.open("<%=request.getContextPath()%>/member/memberSearch.member", "", "top=300, left=750, width=400, height=500");
 	  })
   })
   </script>
 </head>
 <body>
-	<form action="./memberLogin.member" title="로그인" method="post">
-		<b>여기갈래 로그인</b>
+	<div id="frmdiv">
+		<b>GoHere?</b>
 		<hr>
+	<form action="./memberLogin.member" title="로그인" method="post">
 		<div class="input-group col-xs-8">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
       <input id="email" type="text" class="form-control" name="email" placeholder="Email">
@@ -32,9 +40,13 @@
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
       <input id="password" type="password" class="form-control" name="password" placeholder="Password">
     </div>
-    	<div id="btn">
-		<button type="button" class="btn btn-default btn-sm" id="loginbtn">로그인</button>
+    	<div id="btn_div">
+		<button type="button" class="btn btn-default btn-sm" id="loginbtn" style="margin-top: 10px;">로그인</button>
+		<button type="button" class="btn btn-default btn-sm" id="Joinbtn" style="margin-top: 10px;">회원가입</button>
+		<button type="button" class="btn btn-default btn-sm" id="Serchbtn" style="margin-top: 10px;">아이디/비밀번호찾기</button>
     	</div>
+
 	</form>
+	</div>
 </body>
 </html>

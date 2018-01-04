@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
@@ -21,10 +20,10 @@
 	 $('#loginbtn').tooltip({title: "여기갈래!", placement: "bottom"});
 	 
 	 $("#joinbtn").click(function(){
-		 window.open("<%=request.getContextPath()%>/member/memberJoin.member", "", "top=300, left=750, width=400, height=400");
+		 window.open("<%=request.getContextPath()%>/member/memberJoin.member", "", "top=300, left=750, width=400, height=500");
 	 });
 	 $("#loginbtn").click(function(){
-		 window.open("<%=request.getContextPath()%>/member/memberLogin.member", "", "top=300, left=750, width=400, height=400");
+		 window.open("<%=request.getContextPath()%>/member/memberLogin.member", "", "top=300, left=750, width=500, height=350");
 	 });
 	 $("#logoutbtn").click(function(){
 		 location.href="<%=request.getContextPath()%>/member/memberLogout.member";
@@ -44,8 +43,16 @@
 			<nav id="category">
 				<ul>
 					<li><a href="#">여행정보</a></li>
+<<<<<<< HEAD
+					<li><a href="./schedule/schedule.schedule">여행일정</a></li>
+					<li><a href="#">여행후기</a></li>
+					<li><a href="./sell/sellHome.sell">상품</a></li>
+=======
 					<li><a href="#">여행일정</a></li>
 					<li><a href="<%=request.getContextPath()%>/sell/reviewList.sell">여행 후기</a></li>
+					
+
+>>>>>>> cafd8be91569f73794a18d49e08b2556dfca317e
 				</ul>
 			</nav>
 		</div>
@@ -58,8 +65,9 @@
 				<c:if test="${not empty member}">
 				<button type="button" class="btn btn-success btn-sm" id="logoutbtn">로그아웃</button>
 				<button type="button" class="btn btn-danger btn-sm" id= "myPagebtn">마이페이지</button>
-				<span class="label label-warning">${member.name}님 환영합니다.</span>
+				<span id="label1" class="label label-warning">${member.name}님 환영합니다.</span>
 				</c:if>
+				
 				
 			</div>
 	
