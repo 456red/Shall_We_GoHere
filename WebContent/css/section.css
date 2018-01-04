@@ -28,11 +28,11 @@
 }
 
 .thumbnail {
-	width:636.66px;
+	width:500px;
 	height:385px;
     padding: 0 0 15px 0;
     border: none;
-    border-radius: 0;
+    border-radius: 0;	
 }
 
 .thumbnail img {
@@ -40,7 +40,6 @@
     height:300px;
     margin-bottom: 10px;
 }
-
 
 
 slideanim {visibility:hidden;}
@@ -61,7 +60,9 @@ slideanim {visibility:hidden;}
       transform: translateY(0%);
     }
   }
+  
   .bg-grey {
       background-color: #f6f6f6;
   }
+  
  

@@ -43,10 +43,16 @@
 			<nav id="category">
 				<ul>
 					<li><a href="#">여행정보</a></li>
+<<<<<<< HEAD
+					<li><a href="./schedule/schedule.schedule">여행일정</a></li>
+					<li><a href="#">여행후기</a></li>
+					<li><a href="./sell/sellHome.sell">상품</a></li>
+=======
 					<li><a href="#">여행일정</a></li>
 					<li><a href="<%=request.getContextPath()%>/sell/reviewList.sell">여행 후기</a></li>
 					
 
+>>>>>>> cafd8be91569f73794a18d49e08b2556dfca317e
 				</ul>
 			</nav>
 		</div>
@@ -61,6 +67,7 @@
 				<button type="button" class="btn btn-danger btn-sm" id= "myPagebtn">마이페이지</button>
 				<span id="label1" class="label label-warning">${member.name}님 환영합니다.</span>
 				</c:if>
+				
 				
 			</div>
 	
