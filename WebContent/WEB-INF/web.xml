@@ -3,7 +3,11 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> woong
 	<servlet>
 		<servlet-name>member</servlet-name>
 		<servlet-class>com.gohere.control.MemberController</servlet-class>
@@ -16,7 +20,11 @@
 		<servlet-name>member</servlet-name>
 		<url-pattern>*.member</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> woong
 	<servlet>
 		<servlet-name>email</servlet-name>
 		<servlet-class>com.gohere.control.EmailController</servlet-class>
