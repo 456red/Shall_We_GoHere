@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="./css/schedule.css" rel="stylesheet">
+<link href="../css/schedule.css" rel="stylesheet">
+<link href="../css/header.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
@@ -14,7 +15,11 @@
 <script type="text/javascript">
 $(function(){
 	$("#goMap").click(function(){
-		location.href="./goMap.jsp";
+		if(${member != null}){
+			location.href="./gomap.schedule";			
+		}else{
+			 window.open("<%=request.getContextPath()%>/member/memberLogin.member", "", "top=300, left=750, width=400, height=400");
+		}
 	});
 });
 </script>

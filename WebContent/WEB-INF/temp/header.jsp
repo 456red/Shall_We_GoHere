@@ -44,7 +44,7 @@
 			<nav id="category">
 				<ul>
 					<li><a href="#">여행정보</a></li>
-					<li><a href="#">여행일정</a></li>
+					<li><a href="./schedule/schedule.schedule">여행일정</a></li>
 					<li><a href="#">여행후기</a></li>
 					<li><a href="./sell/sellHome.sell">상품</a></li>
 				</ul>
@@ -61,6 +61,7 @@
 				<button type="button" class="btn btn-danger btn-sm" id= "myPagebtn">마이페이지</button>
 				<span class="label label-warning">${member.name}님 환영합니다.</span>
 				</c:if>
+				
 				
 			</div>
 	
