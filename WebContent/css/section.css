@@ -28,7 +28,7 @@
 }
 
 .thumbnail {
-	width:636.66px;
+	width:500px;
 	height:385px;
     padding: 0 0 15px 0;
     border: none;
@@ -63,5 +63,8 @@ slideanim {visibility:hidden;}
   }
   .bg-grey {
       background-color: #f6f6f6;
+  }
+  .com-sm-4{
+  	width:550px;
   }
  
