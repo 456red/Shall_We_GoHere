@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.gohere.action.Action;
 import com.gohere.action.ActionFoward;
 
-public class MemberGraph implements Action {
+public class MemberGraphService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
