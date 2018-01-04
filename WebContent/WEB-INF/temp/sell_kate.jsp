@@ -10,28 +10,23 @@
 				<li data-target="#demo" data-slide-to="1"></li>
 				<li data-target="#demo" data-slide-to="2"></li>
 				<li data-target="#demo" data-slide-to="3"></li>
-				<li data-target="#demo" data-slide-to="4"></li>
 			</ul>
 
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="<%=request.getContextPath()%>/images/sell/a.PNG" alt="a"
+					<img src="<%=request.getContextPath()%>/images/sell/board_1.jpg" alt="board_1"
 						width="1400" height="500">
 				</div>
 				<div class="carousel-item">
-					<img src="<%=request.getContextPath()%>/images/sell/d.PNG" alt="d"
+					<img src="<%=request.getContextPath()%>/images/sell/board_2.jpg" alt="board_2"
 						width="1400" height="500">
 				</div>
 				<div class="carousel-item">
-					<img src="<%=request.getContextPath()%>/images/sell/z.PNG" alt="z"
+					<img src="<%=request.getContextPath()%>/images/sell/board_3.jpg" alt="board_3"
 						width="1400" height="500">
 				</div>
 				<div class="carousel-item">
-					<img src="<%=request.getContextPath()%>/images/sell/d.PNG" alt="d"
-						width="1400" height="500">
-				</div>
-				<div class="carousel-item">
-					<img src="<%=request.getContextPath()%>/images/sell/z.PNG" alt="z"
+					<img src="<%=request.getContextPath()%>/images/sell/board_4.jpg" alt="board_4"
 						width="1400" height="500">
 				</div>
 			</div>
@@ -52,16 +47,9 @@
 			<img alt="" src="<%=request.getContextPath()%>/images/sell/kate.PNG" 
 			width="27" height="25" class="icon">ALL</a>
 			</li>
-			<li><a href="./usage.sell">USAGE</a></li>
-			<li><a href="./exchange.sell">EXCHANGE</a></li>
-			<li><a href="./purchase.sell">PURCHASE</a></li>
-			<li class="dropdown">
-				<a href="#" class="dropbtn">COMMUNITY</a>
-				<div class="dropdown-content">
-					<a href="./reviewList.sell">REVIEW</a> 
-					<a href="./noticeList.sell">NOTICE</a>
-					<a href="./qnaList.sell">Q＆A</a>
-				</div></li>
+			<li><a href="./reviewList.sell">REVIEW</a> </li>
+			<li><a href="./noticeList.sell">NOTICE</a></li>
+			<li><a href="./qnaList.sell">Q＆A</a></li>
 		</ul>
 	</section>
 </body>
