@@ -8,12 +8,27 @@ public class MemberDTO {
 	private String email;
 	private String phone;
 	private String recommend;
-	private Date join_date;
+	private String join_date;
+	private String leave_date;
+	private String reason;
 	
-	public Date getJoin_date() {
+
+	public String getLeave_date() {
+		return leave_date;
+	}
+	public void setLeave_date(String leave_date) {
+		this.leave_date = leave_date;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public String getJoin_date() {
 		return join_date;
 	}
-	public void setJoin_date(Date join_date) {
+	public void setJoin_date(String join_date) {
 		this.join_date = join_date;
 	}
 	private int point;

@@ -25,10 +25,23 @@ $(function(){
 </head>
 <body>
 <form action="./memberDelete.member" method="post">
-<input type="text" value="${member.email}" readonly="readonly" name="email">
-<input type="text" value="${member.name}" readonly="readonly">
-<input type="password" name="password" id="password">
-<textarea rows="" cols="" name="reason" id="reason"></textarea>
+<div>
+EMAIL:<input type="text" value="${member.email}" readonly="readonly" name="email">
+</div>
+<div>
+NAME:<input type="text" value="${member.name}" readonly="readonly">
+</div>
+<div>
+PASSWORD:<input type="password" name="password" id="password">
+</div>
+<div>
+JOINDATE:<input type="text" name="join_date" value="${member.join_date}" readonly="readonly">
+</div>
+REASON:<select id="select" name="reason">
+	<option value="가">가</option>
+	<option value="나">나</option>
+	<option value="다">다</option>
+</select>
 <input type="button" value="탈퇴" id="btn">
 </form>
 </body>
