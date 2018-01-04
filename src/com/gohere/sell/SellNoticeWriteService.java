@@ -11,15 +11,15 @@ import com.gohere.action.ActionFoward;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class SellReviewWriteService implements Action {
+public class SellNoticeWriteService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		if(method.equals("POST")) {
-			ReviewDTO reviewDTO = new ReviewDTO();
-			ReviewDAO reviewDAO = new ReviewDAO();
+			NoticeDTO noticeDTO = new NoticeDTO();
+			NoticeDAO noticeDAO = new NoticeDAO();
 
 			String filePath = request.getServletContext().getRealPath("upload");
 			File file = new File(filePath);
@@ -28,18 +28,16 @@ public class SellReviewWriteService implements Action {
 			}
 			int maxSize = 1024*1024*100;
 
-
-			MultipartRequest multi=null;
+			MultipartRequest multi = null;
 			try {
 				multi = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-				reviewDTO.setWriter(multi.getParameter("writer"));
-				reviewDTO.setTitle(multi.getParameter("title"));
-				reviewDTO.setContents(multi.getParameter("contents"));
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				noticeDTO.setWriter(multi.getParameter("writer"));
+				noticeDTO.setTitle(multi.getParameter("title"));
+				noticeDTO.setContents(multi.getParameter("contents"));
+			} catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
 			}
-
 
 			Enumeration<Object> names = multi.getFileNames();
 			while(names.hasMoreElements()) {
@@ -48,19 +46,18 @@ public class SellReviewWriteService implements Action {
 				String oName = multi.getOriginalFileName(name);
 			}
 
-
 			int num = 0;
 			try {
-				num = reviewDAO.getNum();
+				num = noticeDAO.getNum();
 			} catch (Exception e) {
-				// TODO: handle exception
 				e.printStackTrace();
+				// TODO: handle exception
 			}
-			reviewDTO.setNum(num);
+			noticeDTO.setNum(num);
 
 			int result = 0;
 			try {
-				result = reviewDAO.insert(reviewDTO);
+				result = noticeDAO.insert(noticeDTO);
 			} catch (Exception e) {
 				e.printStackTrace();
 				// TODO: handle exception
@@ -68,23 +65,21 @@ public class SellReviewWriteService implements Action {
 
 			if(result>0) {
 				request.setAttribute("message", "글이 등록 되었습니다.");
-				request.setAttribute("path", "./reviewList.sell");
+				request.setAttribute("path", "./noticeList.sell");
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/common/result.jsp");
 			}else {
 				request.setAttribute("message", "Fail");
-				request.setAttribute("path", "./reviewList.sell");
+				request.setAttribute("path", "./noticeList.sell");
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/common/result.jsp");
 			}
 
-		}else { //GET일 경우
-			request.setAttribute("board", "review");
+		}else { //GET
+			request.setAttribute("board", "notice");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/sell/boardWrite.jsp");
 		}
-
 		return actionFoward;
 	}
-
 }

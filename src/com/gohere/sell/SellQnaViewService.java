@@ -9,12 +9,12 @@ import com.gohere.action.Action;
 import com.gohere.action.ActionFoward;
 import com.gohere.member.MemberDTO;
 
-public class SellReviewViewService implements Action {
+public class SellQnaViewService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		ReviewDAO reviewDAO = new ReviewDAO();
+		QnaDAO qnaDAO = new QnaDAO();
 		BoardDTO boardDTO = null;
 		ReplyDAO replyDAO = new ReplyDAO();
 		ArrayList<ReplyDTO> ar = null;
@@ -32,24 +32,23 @@ public class SellReviewViewService implements Action {
 			e.printStackTrace();
 		}
 		try {
-			hit = reviewDAO.hit(num);
+			hit = qnaDAO.hit(num);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		ReviewDTO reviewDTO = new ReviewDTO();
-		reviewDTO.setHit(hit);
+		QnaDTO qnaDTO = new QnaDTO();
+		qnaDTO.setHit(hit);
 		
 		try {
-			boardDTO = reviewDAO.selectOne(num);
+			boardDTO = qnaDAO.selectOne(num);
 			ar = replyDAO.selectList(p_num, b_name);
-			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(boardDTO != null) {
-			request.setAttribute("board", "review");
+			request.setAttribute("board", "qna");
 			request.setAttribute("view", boardDTO);
 			request.setAttribute("r_list", ar);
 			request.setAttribute("member", memberDTO);

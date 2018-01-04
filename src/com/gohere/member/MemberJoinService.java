@@ -37,7 +37,7 @@ public class MemberJoinService implements Action {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String message="실패";
+			String message="�실패";
 			
 			
 			if(result>0) {
