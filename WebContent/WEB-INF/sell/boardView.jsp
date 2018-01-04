@@ -98,7 +98,7 @@ $(document).ready(function() {
 			</table>
 
 			<div class="r_view">
-				<c:if test="${board eq 'qna' and member.name eq view.writer}">
+				<c:if test="${board eq 'qna' and member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
 					<div class="rv_board">
 						<c:forEach items="${r_list}" var="r_i">
 							<div class="rv_name">${r_i.email}(${r_i.name})</div>
@@ -163,7 +163,7 @@ $(document).ready(function() {
 				</c:if>
 
 				<c:if test="${board ne 'notice'}">
-					<c:if test="${board eq 'qna' and member.name eq view.writer}">
+					<c:if test="${board eq 'qna' and member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
 						<button class="r">Reply</button>
 					</c:if>
 				</c:if>
