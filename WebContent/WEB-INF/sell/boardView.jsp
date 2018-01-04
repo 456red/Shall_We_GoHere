@@ -1,26 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+		$(".r").click(function() {
+		$(".r_view").css("border-bottom", "3px solid white");	
+			$(".r_form").show();
+		});
 
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		$("#no").click(function() {
+			$(".r_form").hide();
+			$("#contents").val('');
+		});
+		
+		$("#yes").click(function() {
+			if($("#contents").val() == ''){
+				alert("글을 입력해주세요.")
+			}else{
+				$(".r_form").hide();
+				var con = $("#contents").val();
+				
+				$.get("../sell/replyWrite.sell?contents="+con+"&p_num=${view.num}", function(data) {
+					$(".rv_board").prepend(data);
+					$("#contents").val('');
+				});
+			}
+		});
 
-<link href="../css/boardView.css" rel="stylesheet">
-<link href="../css/sell_kate.css" rel="stylesheet">
+		$(".up").click(function() {
+			$.get("../sell/reviewUp.sell?num=${view.num}", function(data) {
+				$("#t_up").html(data);
+			});
+		});
+
+	});
+	
+</script>
+<link href="../css/sell/boardView.css" rel="stylesheet">
+<link href="../css/sell/sell_kate.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 </head>
 <body>
@@ -29,48 +59,125 @@
 	<!--Header 끝-->
 
 	<!--Main 시작-->
-	<section class="main">
-		<article class="wrap">
-			<img alt="" src="../images/sell/point_1.PNG">
-		</article>
-	</section>
 
 	<%@include file="../temp/sell_kate.jsp"%>
 
 	<div class="title_board">
 		<ul class="title">
-			<li>＜${board} View＞</li>
+			<li>${board}</li>
 		</ul>
 	</div>
 
 	<section class="view_board">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>TITLE</th>
-					<th>WRITER</th>
-					<th>DATE</th>
-					<th>HIT</th>
-				</tr>
-				<tr>
-					<th>${view.title}</th>
-					<th>${view.writer}</th>
-					<th>${view.reg_date}</th>
-					<th>${view.hit}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td colspan="4">${view.contents}</td>
-				</tr>
-			</tbody>
-		</table>
-		<a class="btn btn-success" href="./${board}List.sell">List</a>
+		<article class="view_board_2">
+			<table class="view_table">
+				<thead>
+					<tr>
+						<td id="t_title">${view.title}</td>
+					</tr>
+					<tr>
+						<th class="t_box">NAME</th>
+						<td id="t_writer">${view.writer}</td>
+						<th class="t_box">DATE</th>
+						<td id="t_date">${view.reg_date}</td>
+						<th id="t_box_hit">HIT</th>
+						<td id="t_hit">${view.hit}</td>
+						<c:if test="${board eq 'review'}">
+							<th id="t_box_up">♥</th>
+							<td id="t_up">${view.up}</td>
+						</c:if>
+					</tr>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="t_con" colspan="4">${view.contents}</td>
+					</tr>
+				</tbody>
+			</table>
 
-		<div id="btn">
-			<a class="btn btn-primary" href="${board}Update.sell?num=${view.num}">Update</a>
-			<a class="btn btn-danger" href="${board}Delete.sell?num=${view.num}">Delete</a>
-		</div>
+			<div class="r_view">
+				<c:if test="${board eq 'qna' and member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
+					<div class="rv_board">
+						<c:forEach items="${r_list}" var="r_i">
+							<div class="rv_name">${r_i.email}(${r_i.name})</div>
+							<input type="hidden" name="p_num" id="p_num" value="${view.num}">
+							<c:if
+								test="${member.name eq r_i.name || member.email eq 'gohere@gohere.gohere'}">
+								<div>
+									<a class="rv_btn" id="rv_d"
+										href="../sell/replyDelete.sell?num=${r_i.num}">삭제</a>
+								</div>
+							</c:if>
+							<div class="rv_date">${r_i.rp_date}</div>
+							<div class="rv_con_board">
+								<div class="rv_con">${r_i.contents}</div>
+							</div>
+						</c:forEach>
+					</div>
+				</c:if>
+
+				<c:if test="${board eq 'review'}">
+					<div class="rv_board">
+						<c:forEach items="${r_list}" var="r_i">
+							<div class="rv_name">${r_i.email}(${r_i.name})</div>
+							<input type="hidden" name="p_num" id="p_num" value="${view.num}">
+							<c:if
+								test="${member.name eq r_i.name || member.email eq 'gohere@gohere.gohere'}">
+								<div>
+									<a class="rv_btn" id="rv_d"
+										href="../sell/replyDelete.sell?num=${r_i.num}">삭제</a>
+								</div>
+							</c:if>
+							<div class="rv_date">${r_i.rp_date}</div>
+							<div class="rv_con_board">
+								<div class="rv_con">${r_i.contents}</div>
+							</div>
+						</c:forEach>
+					</div>
+				</c:if>
+			</div>
+
+
+
+
+			<div class="r_form" style="display: none;">
+				<div class="r_title">
+					<label for="comment">Reply</label>
+				</div>
+				<div class="r_con">
+					<textarea class="form-control" rows="4" id="contents"></textarea>
+				<div>
+						<button class="r_btn" id="yes">yes</button>
+						<button class="r_btn" id="no">no</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="b_btn">
+				<c:if
+					test="${member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
+					<a href="${board}Update.sell?num=${view.num}">Update</a>
+					<a href="${board}Delete.sell?num=${view.num}">Delete</a>
+				</c:if>
+
+				<c:if test="${board ne 'notice'}">
+					<c:if test="${board eq 'qna' and member.name eq view.writer || member.email eq 'gohere@gohere.gohere'}">
+						<button class="r">Reply</button>
+					</c:if>
+				</c:if>
+
+				<c:if test="${board eq 'review' and not empty member}">
+					<button class="r">Reply</button>
+					<button class="up">♥</button>
+				</c:if>
+
+				<div id="b_list">
+					<a href="./${board}List.sell">List</a>
+				</div>
+			</div>
+		</article>
 	</section>
 	<!--Main 끝-->
 

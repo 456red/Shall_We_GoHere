@@ -14,13 +14,12 @@ public class ReviewDAO implements BoardDAO {
 	@Override //Insert
 	public int insert(BoardDTO boardDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into s_review values(?,?,?,?,sysdate,?,0,0)"; 
+		String sql = "insert into s_review values(?,?,?,?,sysdate,0,0)"; 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, boardDTO.getNum());
 		st.setString(2, boardDTO.getTitle());
 		st.setString(3, boardDTO.getWriter());
 		st.setString(4, boardDTO.getContents());
-		st.setInt(5, boardDTO.getHit());
 		int result = st.executeUpdate();
 
 		DBConnector.disConnect(st, con);
@@ -69,9 +68,10 @@ public class ReviewDAO implements BoardDAO {
 			reviewDTO.setContents(rs.getString("contents"));
 			reviewDTO.setReg_date(rs.getDate("r_date"));
 			reviewDTO.setHit(rs.getInt("hit"));
+			reviewDTO.setUp(rs.getInt("up"));
 		}
 		DBConnector.disConnect(st, con, rs);
-		return null;
+		return reviewDTO;
 	}
 
 	@Override //SelectList
@@ -96,6 +96,7 @@ public class ReviewDAO implements BoardDAO {
 			reviewDTO.setContents(rs.getString("contents"));
 			reviewDTO.setReg_date(rs.getDate("r_date"));
 			reviewDTO.setHit(rs.getInt("hit"));
+			reviewDTO.setUp(rs.getInt("up"));
 			ar.add(reviewDTO);
 		}
 		DBConnector.disConnect(st, con, rs);
@@ -131,7 +132,7 @@ public class ReviewDAO implements BoardDAO {
 	//GetNum
 	public int getNum() throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "select sell_seq.nextval from dual";
+		String sql = "select board_seq.nextval from dual";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		rs.next();
@@ -140,5 +141,53 @@ public class ReviewDAO implements BoardDAO {
 		DBConnector.disConnect(st, con, rs);
 		return num;
 	}
+	
+	//UP
+	public int up(int num,String email) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "update s_review set up=up+1 where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		int result = st.executeUpdate();
+		
+		sql = "insert into s_up values(?,?,sysdate)";
+		st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		st.setString(2, email);
+		result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
+	//UP Select
+	public boolean select(int num,String email) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from s_up where to_char(up_date,'YY/MM/DD')=to_char(sysdate,'YY/MM/DD')and num=? and email=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		st.setString(2, email);
+		ResultSet rs = st.executeQuery();
+		boolean check = false;
+		if(rs.next()) {
+			check= !check;
+		}else {
+			this.up(num, email);
+		}
+		return check;
+	}
+	
+	public int upsel(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select up from s_review where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		return rs.getInt(1);
+	}
+	
+	
+	
 
 }

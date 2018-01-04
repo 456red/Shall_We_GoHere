@@ -59,4 +59,26 @@
 		float: left;
 		
 	}
+	
+@keyframes blink {
+ 0% {background-color: green;}
+ 25% {background-color: red;}
+ 50% {background-color: orange;}
+ 75% {background-color: violet;}
+}
+ 
+/* for Chrome, Safari */
+@-webkit-keyframes blink {
+  0% {background-color: green;}
+ 25% {background-color: red;}
+ 50% {background-color: orange;}
+ 75% {background-color: violet;}
+}
+ 
+/* blink CSS 브라우저 별로 각각 애니메이션을 지정해 주어야 동작한다. */
+#label1 {
+ font-weight:bold;
+ animation: blink 1s step-end infinite;
+ -webkit-animation: blink 1s step-end infinite;
+}
 

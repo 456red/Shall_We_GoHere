@@ -25,7 +25,7 @@ public class MemberLoginService implements Action {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String message="ë¡œê·¸ì¸ ì‹¤íŒ¨";
+		String message="·Î±×ÀÎ ½ÇÆĞ";
 		if(memberDTO==null) {
 			actionFoward = new ActionFoward();
 			request.setAttribute("message", message);
@@ -35,7 +35,7 @@ public class MemberLoginService implements Action {
 		}else {
 			
 			actionFoward = new ActionFoward();
-			message="ë¡œê·¸ì¸ ì„±ê³µ";
+			message="·Î±×ÀÎ ¼º°ø";
 			request.getSession().setAttribute("member", memberDTO);
 			request.setAttribute("message", message);
 			request.setAttribute("path", "../main.jsp");

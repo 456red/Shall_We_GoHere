@@ -1,0 +1,289 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.view_board {
+	width: 100%;
+	padding: 50px 0;
+}
+
+.view_board_2 {
+	width: 60%;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	table-layout: fixed;
+	word-wrap: break-word;
+	word-break: keep-all;
+}
+
+tr {
+	display: table-row;
+	width: 100%;
+	float: left;
+}
+
+.view_table th {
+	color: #000000;
+	height: 40px;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 6px 0;
+	font-family: sans-serif;
+}
+
+.view_table td {
+	font-size: 13px;
+	padding-top: 5px;
+	padding-left: 17px;
+	height: 40px;
+	font-family: "Nanum Gothic", 돋움;
+}
+
+#t_title {
+	width: 1200px;
+	height: 50px;
+	text-align: center;
+	font-size: 17px;
+	font-weight: bold;
+	border-top: 3px solid #e5e5e5;
+	border-bottom: 3px solid #e5e5e5;
+}
+
+.t_box {
+	width: 60px;
+	text-align: right;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_writer {
+	width: 920px;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_date {
+	width: 120px;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_box_hit {
+	width: 40px;
+	text-align: right;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_hit {
+	width: 50px;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_box_up {
+	width: 30px;
+	text-align: right;
+	color: red;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_up {
+	width: 20px;
+	padding-right: 15px;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#t_con {
+	width: 1140px;
+	border-bottom: 3px solid #e5e5e5;
+}
+
+.r_table {
+	margin-top: 10px;
+}
+
+.r_title {
+	width: 1140px;
+	height: 40px;
+	color: #000000;
+	font-size: 14px;
+	padding: 6px 15px 0;
+	font-family: sans-serif;
+}
+
+.r_con {
+	width: 100%;
+	padding-bottom: 20px;
+	border-bottom: 3px solid #e5e5e5;
+}
+
+#contents {
+	width: 95%;
+	margin-left: 12px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.r_btn{
+	display: inline-block;
+	width: 50px;
+	height: 30px;
+	font-size: 14px;
+	font-family: sans-serif;
+	text-align: center;
+	color: rgb(99, 99, 99);
+	border: 1px solid rgb(214, 214, 214);
+	background-color: rgb(255, 255, 255);
+	margin-left: 12px;
+	padding-bottom: 5px;
+}
+
+.r_btn:hover{
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: gray;
+}
+
+.b_btn {
+	margin-top: 15px;
+}
+
+.b_btn a{
+	display: inline-block;
+	width: 70px;
+	height: 30px;
+	padding-top: 3px;
+	line-height: 20px;
+	font-size: 13px;
+	font-family: sans-serif;
+	text-align: center;
+	color: rgb(99, 99, 99);
+	border: 1px solid rgb(214, 214, 214);
+	border-image: initial;
+	background-color: rgb(255, 255, 255);
+}
+
+.b_btn a:hover {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: gray;
+}
+
+.r, .up{
+	display: inline-block;
+	width: 70px;
+	height: 30px;
+	padding-bottom: 2px;
+	font-size: 13px;
+	font-family: sans-serif;
+	text-align: center;
+	color: rgb(99, 99, 99);
+	border: 1px solid rgb(214, 214, 214);
+	border-image: initial;
+	background-color: rgb(255, 255, 255);
+}
+
+.r:hover {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: gray;
+}
+
+.r_view{
+	width: 100%;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 0;
+}
+
+.rv_board{
+	width: 98%;
+	margin: 0 auto;
+	padding: 10px;
+	background-color: #F5F5F5;
+}
+
+.rv_name{
+	width: 300px;
+	color: #000000;
+	height: 20px;
+	font-weight: bold;
+	font-size: 14px;
+	font-family: sans-serif;
+	float: left;
+	display: inline-block;
+	
+}
+
+.rv_date{
+	width: 80px;
+	color: #000000;
+	height: 20px;
+	font-size: 13px;
+	font-family: sans-serif;
+	display: inline-block;
+	float: right;
+}
+
+.rv_btn{
+	display: inline-block;
+	float: right;
+	width: 35px;
+	height: 20px;
+	font-size: 10px;
+	font-family: sans-serif;
+	text-align: center;
+	color: rgb(99, 99, 99);
+	border: 1px solid rgb(214, 214, 214);
+	background-color: rgb(255, 255, 255);
+	margin-left: 5px;
+}
+
+.rv_btn:hover{
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: black;
+}
+
+.rv_con_board{
+	display: inline-block;
+	width: 100%;
+	float: none; 
+	margin-top: 10px;
+	padding: 10px 0;
+	border-bottom: 1px dotted gray; 
+	
+}
+.rv_con{
+	width: 100%;
+}
+
+.up{
+	width: 30px;
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.up:hover{
+	color: red;
+	text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+}
+
+#b_list {
+	float: right;
+}
+
+footer {
+	width: 100%;
+	height: 50px;
+	margin-top: 50px;
+	background-color: white;
+}

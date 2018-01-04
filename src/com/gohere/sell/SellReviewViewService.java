@@ -1,10 +1,13 @@
 package com.gohere.sell;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gohere.action.Action;
 import com.gohere.action.ActionFoward;
+import com.gohere.member.MemberDTO;
 
 public class SellReviewViewService implements Action {
 
@@ -13,22 +16,43 @@ public class SellReviewViewService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ReviewDAO reviewDAO = new ReviewDAO();
 		BoardDTO boardDTO = null;
+		ReplyDAO replyDAO = new ReplyDAO();
+		ArrayList<ReplyDTO> ar = null;
+		
+		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");
+		int p_num = Integer.parseInt(request.getParameter("num"));
+		String b_name = request.getParameter("b_name");
+		
+		int hit = 0;
 		int num = 0;
+		
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
+		try {
+			hit = reviewDAO.hit(num);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		ReviewDTO reviewDTO = new ReviewDTO();
+		reviewDTO.setHit(hit);
 		
 		try {
 			boardDTO = reviewDAO.selectOne(num);
+			ar = replyDAO.selectList(p_num, b_name);
+			
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(boardDTO != null) {
 			request.setAttribute("board", "review");
 			request.setAttribute("view", boardDTO);
+			request.setAttribute("r_list", ar);
+			request.setAttribute("member", memberDTO);
 			actionFoward.setPath("../WEB-INF/sell/boardView.jsp");
 		}
 		actionFoward.setCheck(true);

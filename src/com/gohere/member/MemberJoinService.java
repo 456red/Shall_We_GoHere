@@ -24,7 +24,12 @@ public class MemberJoinService implements Action {
 			memberDTO.setEmail(request.getParameter("email"));
 			memberDTO.setName(request.getParameter("name"));
 			memberDTO.setPassword(request.getParameter("password"));
-			memberDTO.setPhone(request.getParameter("phone"));
+			String[]ar=request.getParameterValues("phone");
+			String phone="";
+			for(String num : ar) {
+				phone += num;
+			}
+			memberDTO.setPhone(phone);
 			memberDTO.setRecommend(request.getParameter("recommend"));
 			
 			memberDAO = new MemberDAO();
@@ -37,26 +42,36 @@ public class MemberJoinService implements Action {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String message="실패";
+
+			String check="";
+			try {
+				String email = request.getParameter("email");
+				check=memberDAO.emailCheck(email);
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
 			
-			
+			String message="";
 			if(result>0) {
-				message="성공";
-				actionFoward = new ActionFoward();
-				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEB-INF/message/message.jsp");
+				message="가입성공";
+				actionFoward = new ActionFoward();				
 				request.setAttribute("message", message);
 				request.setAttribute("result", result);
+				request.setAttribute("path", "../main.jsp");
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/message/message.jsp");
 				
 				
 			}else {
-				actionFoward = new ActionFoward();
+				actionFoward = new ActionFoward();	
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/message/message.jsp");
+				if(check=="") {
+					message="이미 가입된 이메일입니다.";		
+				}
 				request.setAttribute("message", message);
 				request.setAttribute("path", "../member/memberJoin.member");
 			}
-			
 			
 			
 			

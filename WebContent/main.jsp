@@ -5,11 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+#topAutoScroll img {max-width:50px; z-index:999; position:fixed; bottom:0px; right:0px;}
+</style>
 
 <script type="text/javascript">
-	$(document).ready(function() {
 
-
+	$(function(){
+		
 		$(window).scroll(function() {
 			$(".slideanim").each(function() {
 				var pos = $(this).offset().top;
@@ -35,6 +38,7 @@
 </head>
 <body>
 
+	<%@include file="./WEB-INF/temp/scroll.jsp" %>
 	<%@include file="./WEB-INF/temp/header.jsp"%>
 	<section id="main">
 		<section id="subMain">
@@ -155,6 +159,7 @@
 		</div>
 		
 	</section>
+	
 
 </body>
 </html>
