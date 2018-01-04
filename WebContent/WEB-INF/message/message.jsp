@@ -11,15 +11,12 @@
 	alert('${message}');
 	
 	if(${member!=null}){
-		alert("member!=null");
 			opener.location.href="${path}";
 			window.close();
 		
 	}else if(${result==1}){
-		alert("result==1");
 		window.close();
-	}else{
-		alert("result==0");
+	}else{		
 	location.href="${path}";	
 	};
 	

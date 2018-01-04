@@ -42,9 +42,7 @@ public class MemberJoinService implements Action {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-			String message="�실패";
-=======
+
 			String check="";
 			try {
 				String email = request.getParameter("email");
@@ -52,8 +50,6 @@ public class MemberJoinService implements Action {
 			}catch (Exception e) {
 				// TODO: handle exception
 			}
->>>>>>> woong
-			
 			
 			String message="";
 			if(result>0) {

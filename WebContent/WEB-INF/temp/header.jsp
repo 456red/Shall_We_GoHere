@@ -44,12 +44,9 @@
 				<ul>
 					<li><a href="#">여행정보</a></li>
 					<li><a href="#">여행일정</a></li>
-<<<<<<< HEAD
 					<li><a href="<%=request.getContextPath()%>/sell/reviewList.sell">여행 후기</a></li>
-=======
-					<li><a href="#">여행후기</a></li>
-					<li><a href="<%=request.getContextPath()%>/sell/sellHome.sell">상품</a></li>
->>>>>>> woong
+					
+
 				</ul>
 			</nav>
 		</div>
