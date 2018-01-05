@@ -5,6 +5,7 @@
 		<article class="board">
 			<div id="demo" class="carousel slide" data-ride="carousel">
 
+
 				<ul class="carousel-indicators">
 					<li data-target="#demo" data-slide-to="0" class="active"></li>
 					<li data-target="#demo" data-slide-to="1"></li>
@@ -42,17 +43,21 @@
 
 	<section class="kate_board">
 		<ul class="kate_line">
-			<li id="s" class="dropdown"><a href="#" class="dropbtn"> <img
-					alt="" src="<%=request.getContextPath()%>/images/sell/kate.PNG"
-					width="27" height="25" class="icon">ALL
-			</a>
+			<li id="s">
+			<a href="#"> 
+			<img alt="" src="<%=request.getContextPath()%>/images/sell/kate.PNG" 
+			width="27" height="25" class="icon">ALL</a>
+			</li>
+			<li><a href="./exchange.sell">EXCHANGE</a></li>
+			<li><a href="./purchase.sell">PURCHASE</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">COMMUNITY</a>
 				<div class="dropdown-content">
-					<a href="./reviewList.sell">REVIEW</a> <a href="./noticeList.sell">NOTICE</a>
+					<a href="./reviewList.sell">REVIEW</a> 
+					<a href="./noticeList.sell">NOTICE</a>
 					<a href="./qnaList.sell">Q＆A</a>
 				</div></li>
-			<li><a href="./reviewList.sell">REVIEW</a></li>
-			<li><a href="./noticeList.sell">NOTICE</a></li>
-			<li><a href="./qnaList.sell">Q＆A</a></li>
+
 		</ul>
 	</section>
 </body>

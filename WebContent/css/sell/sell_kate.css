@@ -21,7 +21,7 @@
 
 .kate_line {
 	margin-top: 100px;
-	width: 720px;
+	width: 800px;
 	height: 30px;
 	margin: 0 auto;
 }
@@ -54,6 +54,37 @@
 	color: black;
 	font-weight: bold;
 	text-decoration: none;
+}
+
+.dropdown {
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	margin: 0 auto;
+	background-color: #f9f9f9;
+	width: 90px;
+	text-align: center;
+	z-index: 1;
+}
+
+.dropdown-content a {
+	margin-top: 5px;
+	color: black;
+	font-size: 12px;
+	font-family: sans-serif;
+	padding: 10px 15px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
 }
 
 .title_board {
